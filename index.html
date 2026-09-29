@@ -57,19 +57,20 @@
 <!-- HEADER -->
 <header class="site" data-site-header>
   <nav class="wrap nav" aria-label="Primary">
-    <a href="/" class="logo-lockup" aria-label="The Round by Kuma Partners, home">
-      <img src="assets/logo-kuma.png" alt="Kuma Partners" class="kuma-brand-logo" width="132" height="37">
-      <span class="sub-brand-divider" aria-hidden="true">/</span>
-      <span class="sub-brand-title">The Round</span>
+    <a href="/" class="brand-lockup" aria-label="The Round by Kuma Partners, home">
+      <img src="assets/logo-kuma.png" alt="Kuma Partners" class="brand-logo" width="135" height="30" data-brand-logo>
+      <span class="brand-fallback" aria-hidden="true">Kuma Partners</span>
+      <span class="brand-divider" aria-hidden="true">/</span>
+      <span class="sub-brand">The Round</span>
     </a>
 
     <ul class="nav-links" id="primary-nav" data-nav-drawer>
-      <li><a href="#cadence" data-scroll>Operating Architecture</a></li>
+      <li><a href="#cadence" data-scroll>Operating Cadence</a></li>
       <li><a href="#toolkit" data-scroll>Dynamic Toolkit</a></li>
-      <li><a href="#retreats" data-scroll>Retreats &amp; Offsites</a></li>
-      <li><a href="#caliber" data-scroll>Member Caliber</a></li>
+      <li><a href="#retreats" data-scroll>Retreats</a></li>
+      <li><a href="#caliber" data-scroll>Caliber</a></li>
       <li class="nav-mobile-only">
-        <button type="button" class="btn btn-secondary btn-sm btn-block" data-open-portal>Member Portal</button>
+        <button type="button" class="btn btn-portal btn-sm btn-block" data-open-portal><svg class="portal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Member Portal</span></button>
       </li>
       <li class="nav-mobile-only">
         <a href="#apply" class="btn btn-primary btn-sm btn-block" data-scroll>Request a Seat</a>
@@ -77,7 +78,7 @@
     </ul>
 
     <div class="nav-cta">
-      <button type="button" class="btn btn-secondary btn-sm" data-open-portal>Member Portal</button>
+      <button type="button" class="btn btn-portal btn-sm" data-open-portal><svg class="portal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Member Portal</span></button>
       <a href="#apply" class="btn btn-primary btn-sm" data-scroll data-public-only>Request a Seat</a>
       <button type="button" class="btn btn-primary btn-sm" data-logout data-portal-only hidden>Log out</button>
     </div>
@@ -468,10 +469,11 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a href="/" class="logo-lockup logo-lockup--invert">
-          <img src="assets/logo-kuma.png" alt="Kuma Partners" class="kuma-brand-logo" width="132" height="37">
-          <span class="sub-brand-divider" aria-hidden="true">/</span>
-          <span class="sub-brand-title">The Round</span>
+        <a href="/" class="brand-lockup brand-lockup--invert" aria-label="The Round by Kuma Partners, home">
+          <img src="assets/logo-kuma-light.png" alt="Kuma Partners" class="brand-logo" width="135" height="30" loading="lazy" data-brand-logo>
+          <span class="brand-fallback" aria-hidden="true">Kuma Partners</span>
+          <span class="brand-divider" aria-hidden="true">/</span>
+          <span class="sub-brand">The Round</span>
         </a>
         <p class="footer-blurb">Executive peer operating system by Kuma Partners.</p>
         <a href="mailto:contact@kuma.partners" class="footer-email">contact@kuma.partners</a>

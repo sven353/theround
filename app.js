@@ -1080,6 +1080,12 @@
 
   const init = () => {
     $$('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
+    // Brand logo fallback: show the text lockup if the image is missing.
+    $$('[data-brand-logo]').forEach((img) => {
+      const fail = () => img.closest('.brand-lockup').classList.add('is-logo-missing');
+      if (img.complete && img.naturalWidth === 0) fail();
+      else img.addEventListener('error', fail, { once: true });
+    });
     Nav.init();
     Tabs.init();
     Modal.init();
