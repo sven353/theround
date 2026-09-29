@@ -378,7 +378,7 @@
         sub.textContent = r.context;
         c1.appendChild(sub);
 
-        const c2 = cell('Decision', 'cell-decision');
+        const c2 = cell('Hard call', 'cell-decision');
         c2.textContent = r.decision;
 
         const c3 = cell('Target date', 'cell-date');
