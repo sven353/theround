@@ -45,6 +45,8 @@
     maxLoginAttempts: 5,
     lockoutMs: 30 * 1000,
     approachingDays: 14,
+    /* Next cohort session shown in the portal header (YYYY-MM-DD). Leave empty to hide the date. */
+    nextSessionDate: '2026-10-14',
     contactEmail: 'contact@kuma.partners',
     personalEmailDomains: [
       'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.es', 'yahoo.fr', 'yahoo.de', 'hotmail.com',
@@ -58,48 +60,12 @@
      restricted Google Drive or Notion page). Items without an href render as
      an access request to the facilitator. */
   const DELIVERABLES = [
-    {
-      type: 'Executive summary',
-      title: 'Monthly Round Summary',
-      description: 'Decisions taken, commitments logged and themes across the board for the latest session.',
-      meta: 'Updated after each Round',
-      href: ''
-    },
-    {
-      type: 'Session template',
-      title: 'Protagonist Brief',
-      description: 'One-page pre-read: baseline facts, Option A versus Option B, and the 90-day cost of inaction.',
-      meta: 'Complete 48 hours before',
-      href: ''
-    },
-    {
-      type: 'Session template',
-      title: 'Hard Call Card',
-      description: 'The Part 4 prescription formula for board members, with timing cues for the facilitator.',
-      meta: 'Printable, one per member',
-      href: ''
-    },
-    {
-      type: 'Board compact',
-      title: 'The Round Compact',
-      description: 'Confidentiality terms, attendance commitments and the rules of each protocol phase.',
-      meta: 'Signed at onboarding',
-      href: ''
-    },
-    {
-      type: 'Minutes',
-      title: 'Session Minutes Archive',
-      description: 'Anonymised minutes of past Rounds, filed by month and format.',
-      meta: 'Members only',
-      href: ''
-    },
-    {
-      type: 'Toolkit',
-      title: 'Governance Stress-Test Guide',
-      description: 'Role cards and question banks for board, investor and succession rehearsals.',
-      meta: 'Used in Q3 sessions',
-      href: ''
-    }
+    { type: 'Minutes', title: 'Monthly Session Minutes', description: 'Anonymised minutes and the commitments logged at each Executive Peer Board.', meta: 'After each board', href: '' },
+    { type: 'Archive', title: 'The Hard Call Archive', description: 'Executed decisions, trade-offs and aftermath metrics from across the cohort.', meta: 'Searchable by theme', href: '' },
+    { type: 'Template', title: 'Dilemma Brief', description: 'One-page pre-read: baseline facts, Option A versus Option B, and the 90-day cost of inaction.', meta: 'Complete 48 hours before', href: '' },
+    { type: 'Template', title: 'Hard Call Card', description: 'The prescription formula for board members: decide [X], execute by [Y], accept [Z].', meta: 'One per member', href: '' },
+    { type: 'Retreats', title: 'Immersion & Offsite Pack', description: 'Logistics, pre-work and the reflection framework for the 24-hour immersion and annual offsite.', meta: 'Shared before each retreat', href: '' },
+    { type: 'Compact', title: 'The Round Compact', description: 'NDA, Chatham House terms, competitor veto and attendance commitments.', meta: 'Signed at onboarding', href: '' }
   ];
 
   /* Seed commitments, anonymised by role. Deadlines are relative to today so
@@ -437,7 +403,7 @@
         message = 'Please enter a valid email address.';
       } else if (field.hasAttribute('data-work-email') && value && isPersonalEmail(value)) {
         message = 'Please use your corporate work email, not a personal inbox.';
-      } else if (field.tagName === 'TEXTAREA' && field.name === 'friction-point' && value && value.length < 40) {
+      } else if (field.dataset.minlength && value && value.length < Number(field.dataset.minlength)) {
         message = 'A little more detail helps us prepare. Aim for two or three sentences.';
       }
       setError(field, message);
@@ -485,7 +451,7 @@
       const form = $('[data-ajax-form="apply"]');
       if (!form) return;
       const success = $('[data-form-success="apply"]');
-      const textarea = $('#apply-friction', form);
+      const textarea = $('textarea[maxlength]', form);
       const counter = $('[data-char-count]', form);
 
       if (textarea && counter) {
@@ -578,6 +544,11 @@
       if (!s) return;
       $$('[data-member-id]').forEach((el) => { el.textContent = s.id; });
       $$('[data-logged-by]').forEach((el) => { el.value = s.id; });
+      $$('[data-next-session]').forEach((el) => {
+        el.textContent = CONFIG.nextSessionDate && daysUntil(CONFIG.nextSessionDate) >= 0
+          ? `Next cohort session: ${formatDate(CONFIG.nextSessionDate)}`
+          : 'Next cohort session to be confirmed';
+      });
       if (publicView) publicView.hidden = true;
       if (portalView) portalView.hidden = false;
       setHeaderMode(true);
@@ -593,7 +564,7 @@
       if (portalView) portalView.hidden = true;
       if (publicView) publicView.hidden = false;
       setHeaderMode(false);
-      document.title = 'The Round by Kuma Partners | Hard Call Advisory Board for Founders and C-Suite Operators';
+      document.title = 'The Round | Executive Peer Operating System by Kuma Partners';
     };
 
     const logout = (reason) => {
