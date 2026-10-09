@@ -8,6 +8,7 @@
    4. Brand logo fallback
    5. Guest seat form: validation + Netlify AJAX
    6. Member Portal: modal, passcode, session, ledger
+   7. Scroll reveal and staggered entrances
 
    SECURITY NOTE
    The portal gate runs in the browser. The passcode is stored only as a
@@ -116,7 +117,7 @@
     const drawer = $('[data-nav-drawer]');
     const toggle = $('[data-nav-toggle]');
     const scrim = $('[data-nav-scrim]');
-    const mq = window.matchMedia('(max-width: 1220px)');
+    const mq = window.matchMedia('(max-width: 1240px)');
 
     const isOpen = () => drawer.classList.contains('is-open');
 
@@ -567,12 +568,50 @@
   })();
 
   /* ------------------------------------------------------------------------
+     7. SCROLL REVEAL
+     Adds .is-visible to .reveal-on-scroll and .reveal-stagger elements as
+     they enter the viewport. Staggered groups get .is-settled once their
+     entrance has finished, so later hover transitions run without delay.
+     ------------------------------------------------------------------------ */
+
+  const Reveal = (() => {
+    const SETTLE_MS = 360 + 650 + 50; // last stagger delay + duration + margin
+
+    const show = (el) => {
+      el.classList.add('is-visible');
+      if (el.classList.contains('reveal-stagger')) {
+        setTimeout(() => el.classList.add('is-settled'), SETTLE_MS);
+      }
+    };
+
+    const init = () => {
+      const items = $$('.reveal-on-scroll, .reveal-stagger');
+      if (!items.length) return;
+      if (reducedMotion() || !('IntersectionObserver' in window)) {
+        items.forEach((el) => { el.classList.add('is-visible', 'is-settled'); });
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          show(entry.target);
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      items.forEach((el) => io.observe(el));
+    };
+
+    return { init };
+  })();
+
+  /* ------------------------------------------------------------------------
      INIT
      ------------------------------------------------------------------------ */
 
   const init = () => {
     $$('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
     initLogoFallback();
+    Reveal.init();
     Nav.init();
     ApplyForm.init();
     Portal.init();
