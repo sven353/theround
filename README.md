@@ -40,7 +40,7 @@ The site is plain static HTML, CSS and vanilla JavaScript. There is no build ste
         ├── cadence-peer-board.webp / .jpg          Cadence card 1 (16:9)
         ├── cadence-sparring-barcelona.webp / .jpg  Cadence card 2 (16:9)
         ├── cadence-immersion-patio.webp / .jpg     Cadence card 3 (16:9)
-        ├── cadence-sanctuary-table.webp / .jpg     Cadence card 4 (16:9 file, 21:9 frame on desktop)
+        ├── cadence-offsite-costa-brava.webp / .jpg Cadence card 4 (16:9)
         ├── round-deliberation-catalonia.webp / .jpg  Proof ribbon
         ├── round-terrace-immersion.webp / .jpg       Proof ribbon
         └── round-alpine-sanctuary.webp / .jpg        Proof ribbon
@@ -56,15 +56,15 @@ Photo source files and their web names:
 | The Round monthly meeting 1.jpeg | cadence-peer-board | Card 1: cropped to 16:9, desk nameplates blurred |
 | Sven Mulfinger Listening.png | cadence-sparring-barcelona | Card 2: cropped to 16:9 |
 | Finca collage (bottom-right tile) | cadence-immersion-patio | Card 3: tile extracted, upscaled to 854 px |
-| Finca collage (bottom-left tile) | cadence-sanctuary-table | Card 4: tile extracted, upscaled to 854 px |
+| Offsite meeting Costa Brava.jpeg | cadence-offsite-costa-brava | Card 4: cropped to 16:9 at 35% from the top, `object-position: center 35%` |
 
-Source files were renamed (no spaces or accents) and resized for the web (1024 px wide, or 854 px for the finca tiles).
+Source files were renamed (no spaces or accents) and resized for the web (1024 px wide, or 854 px for the finca tile).
 
-The two finca images come from a small collage and are upscaled, so they look soft at large sizes. Replace them with the original high-resolution photos when available, keeping the same file names.
+The finca courtyard image comes from a small collage and is upscaled, so it looks soft at large sizes. Replace it with the original high-resolution photo when available, keeping the same file name.
 
 ### Cadence card media rationale
 
-Cards 1 to 4 carry a flush 16:9 photo above a hairline divider, anchoring each format in a real room or retreat setting: the boardroom, the 1:1 conversation, the finca courtyard and the outdoor table. Card 5, the Member Accountability Ledger, stays purely typographic on the navy radial: it is the digital execution layer, and the contrast marks the shift from rooms to record. On desktop, the wide fourth card uses a 21:9 frame so the second row stays balanced against the ledger card.
+Cards 1 to 4 carry a flush 16:9 photo above a hairline divider, anchoring each format in a real room or retreat setting: the boardroom, the 1:1 conversation, the finca courtyard and the Costa Brava offsite working session. Card 5, the Member Accountability Ledger, stays purely typographic on the navy radial: it is the digital execution layer, and the contrast marks the shift from rooms to record.
 
 ---
 
@@ -259,7 +259,8 @@ Netlify detects the form from the static HTML on each deploy. Set up email notif
 
 ## 9. Open items
 
-- Replace the two upscaled finca images (`cadence-immersion-patio`, `cadence-sanctuary-table`) with high-resolution originals, and confirm usage rights for them.
+- Replace the upscaled finca image (`cadence-immersion-patio`) with a high-resolution original, and confirm usage rights for it.
+- Confirm that everyone recognisable in `cadence-offsite-costa-brava` has agreed to appear on the site.
 - Confirm that everyone recognisable in `cadence-peer-board` has agreed to appear on the site.
 - Replace `LEDGER` sample rows with real (anonymised) entries once the cohort starts.
 - Set `minutesPdfUrl` when the first minutes are available.
@@ -272,6 +273,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 9 Oct | Updated Card 04 media to authentic Costa Brava retreat working session (`cadence-offsite-costa-brava`). Outdoor table crop (`cadence-sanctuary-table`) removed. Card 4 returns to the standard 16:9 frame with `object-position: center 35%`. |
 | 9 Oct | Cadence card media: cards 1 to 4 now open with a flush 16:9 photo (peer board, sparring, finca courtyard, outdoor table) above a hairline divider, with a subtle zoom on hover; the ledger card stays typographic on navy. Four new image pairs added to `assets/photos/`. Nameplates blurred in the boardroom photo. Wide fourth card uses a 21:9 frame on desktop. |
 | 9 Oct | Exclusivity and terms update: admission fee raised to €1,000 and permanently waived for Founding Members; date-gating removed from the page and from `site.js`; terms subhead and scarcity note (12 seats, cohort consent) rewritten; all calls to action renamed to Candidate Review; drawer headline and intro rewritten; FAQ 4 rewritten without naming any third-party network (HTML and JSON-LD); FAQ 9 updated in HTML and JSON-LD. Buttons now wrap on phones so the longer labels fit. |
 | 9 Oct | README added. Plain passcode removed from the `site.js` comment. Navigation renamed (The Cadence, Facilitation, Environment, Standards of Fit, FAQ) with collapse at 1100 px. Apple-style card gradients, hero wash, 2 px hover lift with teal border, navy focal shadow on the ledger card. Integrity box extended to three points (non-solicitation added). Application fields renamed. Cookie Preferences note added. |

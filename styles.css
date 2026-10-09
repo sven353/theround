@@ -263,8 +263,8 @@ header.site.is-scrolled{box-shadow:0 8px 24px -20px rgba(var(--navy-rgb),.35);}
 .cadence-card .card-media img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease;}
 .cadence-card:hover .card-media img{transform:scale(1.03);}
 .cadence-card .card-content{display:flex; flex-direction:column; flex:1; padding:28px 24px 32px;}
-/* The wide fourth card uses a letterbox frame on desktop so row two stays balanced */
-@media (min-width:961px){ .cadence-card:nth-child(4) .card-media{aspect-ratio:21 / 9;} }
+/* Card 4 (Costa Brava offsite): keep the table, the sailboat canvas and the room in frame */
+.cadence-card:nth-child(4) .card-media img{object-position:center 35%;}
 .cadence-card--featured{padding:32px 28px;}
 .cadence-card--featured{background:var(--navy); background-image:var(--navy-radial); border-color:var(--navy); box-shadow:var(--navy-focal-shadow); color:var(--on-dark);}
 .cadence-card--featured:hover{border-color:var(--teal); box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 24px 48px -20px rgba(11,21,35,.55);}
