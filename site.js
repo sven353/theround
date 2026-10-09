@@ -100,12 +100,12 @@
     const el = $('[data-toast]');
     let timer = null;
     return {
-      show(message) {
+      show(message, duration) {
         if (!el) return;
         clearTimeout(timer);
         el.textContent = message;
         el.hidden = false;
-        timer = setTimeout(() => { el.hidden = true; }, 3500);
+        timer = setTimeout(() => { el.hidden = true; }, duration || 3500);
       }
     };
   })();
@@ -119,7 +119,7 @@
     const drawer = $('[data-nav-drawer]');
     const toggle = $('[data-nav-toggle]');
     const scrim = $('[data-nav-scrim]');
-    const mq = window.matchMedia('(max-width: 1024px)');
+    const mq = window.matchMedia('(max-width: 1100px)');
 
     const isOpen = () => drawer.classList.contains('is-open');
 
@@ -744,6 +744,14 @@
     initLogoFallback();
     initDateGates();
     Faq.init();
+
+    // This site sets no cookies and runs no tracking, so "Cookie Preferences"
+    // explains that instead of opening an empty consent panel.
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('[data-cookie-info]')) return;
+      e.preventDefault();
+      Toast.show('This site sets no cookies and uses no tracking. Member Portal sign-in is kept in session storage only and clears when you close the tab.', 8000);
+    });
     Reveal.init();
     Nav.init();
     ApplyForm.init();
