@@ -145,7 +145,7 @@ Section order and background cadence:
 | # | Section | Anchor | Background |
 |---|---|---|---|
 | A | Header and navigation | | Translucent cream with blur |
-| B | Hero | | White with teal wash |
+| B | Hero: "Built for those who carry the ultimate call." Subhead positions The Round as a confidential board of peers for Founders and CEOs bearing final responsibility | | White with teal wash |
 | C | Year-round cadence (4 photo cards + ledger card) | `#cadence` | Cream |
 | D | Proof ribbon (3 photos) | `#environment` | Cream (inside C) |
 | E | Facilitation Engine (4 cards) | `#facilitation` | White |
@@ -277,6 +277,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 9 Oct | Updated Hero headline and subhead to authoritative positioning ('Built for those who carry the ultimate call'). Synchronized OpenGraph and meta descriptions. JSON-LD service description updated. |
 | 9 Oct | Card 05 redesigned: operating-compact pill, new subtitle, illustrative ledger telemetry panel (two anonymised entries with status pills), Charter quote, and two actions (Charter, Member Sign-In). New The Round Charter drawer with the 11 points of Schedule 2 and a GDPR note. Charter link added to the footer. |
 | 9 Oct | Refactored #terms to Option B: transitioned subscription fee to candidate-review disclosure to enhance executive exclusivity and alignment with high-touch advisory positioning. New eyebrow, lead and four governance cards; FAQ 9 rewritten in HTML and JSON-LD; numeric price removed from the JSON-LD offer; `.term-value--text` enlarged to 1.35rem. |
 | 9 Oct | Updated Card 04 media to authentic Costa Brava retreat working session (`cadence-offsite-costa-brava`). Outdoor table crop (`cadence-sanctuary-table`) removed. Card 4 returns to the standard 16:9 frame with `object-position: center 35%`. |
