@@ -27,7 +27,8 @@
      ------------------------------------------------------------------------ */
 
   const CONFIG = {
-    /* SHA-256 hex of the cohort passcode. Current passcode: "theround2026".
+    /* SHA-256 hex of the cohort passcode. The plain passcode is never written
+       anywhere in this repository; share it with members outside GitHub.
        To change it, run this in any browser console and paste the result here:
          crypto.subtle.digest('SHA-256', new TextEncoder().encode('new-passcode'))
            .then(b => console.log([...new Uint8Array(b)].map(x => x.toString(16).padStart(2,'0')).join('')))  */
