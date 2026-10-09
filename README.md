@@ -64,7 +64,7 @@ The finca courtyard image comes from a small collage and is upscaled, so it look
 
 ### Cadence card media rationale
 
-Cards 1 to 4 carry a flush 16:9 photo above a hairline divider, anchoring each format in a real room or retreat setting: the boardroom, the 1:1 conversation, the finca courtyard and the Costa Brava offsite working session. Card 5, the Member Accountability Ledger, stays purely typographic on the navy radial: it is the digital execution layer, and the contrast marks the shift from rooms to record.
+Cards 1 to 4 carry a flush 16:9 photo above a hairline divider, anchoring each format in a real room or retreat setting: the boardroom, the 1:1 conversation, the finca courtyard and the Costa Brava offsite working session. Card 5, the Member Accountability Ledger, carries no photo and stays on the navy radial: it is the digital execution layer, and the contrast marks the shift from rooms to record. In place of a photo it shows an illustrative ledger panel (two anonymised entries with context, action, due date, sparring partner and status), a quote from The Round Charter, and two actions: "View The Round Charter (Schedule 2)" opens the Charter drawer, "Member Sign-In" opens the portal. The ledger entries are static illustrations, not live data.
 
 ---
 
@@ -154,7 +154,7 @@ Section order and background cadence:
 | H | FAQ (10 questions) | `#faq` | White |
 | I | Footer | | Cream |
 
-Overlays: the Candidate Review drawer (slides in from the right) and the Member Portal modal.
+Overlays: the Candidate Review drawer and The Round Charter drawer (both slide in from the right and share the `.drawer` styles), and the Member Portal modal. The Charter drawer lists all 11 points of Schedule 2 and ends with a Candidate Review button that hands over to the application drawer. It also opens from the footer and from the `#charter` link.
 
 Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, mobile menu and terms section; "Candidate Review" in the desktop header; "Request Candidate Review" in the footer. The drawer submit button reads "Submit for Review".
 
@@ -165,7 +165,8 @@ Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, 
 | Monthly 6-hour board, Barcelona area, 8 to 12 members, rotating hosts with breakfast and lunch | Cadence card 1, FAQ 1, 2, 5 |
 | Monthly 55-minute 1:1 with Dr. Sven Mulfinger, 90-minute pods with 1 to 2 peers | Cadence card 2, FAQ 1 |
 | 24-Hour Immersion and 3 to 4 day Offsite, each replacing that month's board, programme and facilitation included | Cadence cards 3 and 4, terms, FAQ 6 |
-| Ledger data deleted within 30 days of departure | Cadence card 5, FAQ 7 |
+| Ledger data deleted within 30 days of departure | Charter drawer privacy note, FAQ 7 |
+| The Round Charter, Schedule 2 (11 points) | Charter drawer, quote on cadence card 5 |
 | Competitor exclusivity, non-solicitation, Chatham House beyond membership, AI only for anonymised prep | Integrity box, FAQ 3, 7, 8 |
 | Membership fee not published (Option B): fixed-cycle retainer in continuous 6-month periods, billed semi-annually in advance; full fee schedule disclosed during candidate review | Terms card 1, FAQ 9, JSON-LD offer and price range |
 | €1,000 admission and intake fee (diagnostic framing and onboarding), permanently waived for Founding Members | Terms card 2, FAQ 9, JSON-LD FAQ 9 |
@@ -203,7 +204,8 @@ Modules:
 4. Member Portal: passcode check against the hash, session in `sessionStorage`, lockout after 5 failed attempts, ledger table, logout.
 5. Scroll reveal and stagger via IntersectionObserver.
 6. FAQ accordion: one answer open at a time; questions 5 to 10 sit in `#faq-extended` and are revealed by the "View all 10 questions" toggle; links like `#faq-q7` open that answer directly.
-7. Cookie Preferences: the site sets no cookies and no tracking, so the footer link shows a short explanatory note.
+8. The Round Charter drawer: opens from any `[data-open-charter]`, focus trap, Escape and backdrop close, body scroll lock (kept if another overlay is still open), hands over to the application drawer from its own button.
+9. Cookie Preferences: the site sets no cookies and no tracking, so the footer link shows a short explanatory note.
 
 ### Netlify Forms
 
@@ -275,6 +277,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 9 Oct | Card 05 redesigned: operating-compact pill, new subtitle, illustrative ledger telemetry panel (two anonymised entries with status pills), Charter quote, and two actions (Charter, Member Sign-In). New The Round Charter drawer with the 11 points of Schedule 2 and a GDPR note. Charter link added to the footer. |
 | 9 Oct | Refactored #terms to Option B: transitioned subscription fee to candidate-review disclosure to enhance executive exclusivity and alignment with high-touch advisory positioning. New eyebrow, lead and four governance cards; FAQ 9 rewritten in HTML and JSON-LD; numeric price removed from the JSON-LD offer; `.term-value--text` enlarged to 1.35rem. |
 | 9 Oct | Updated Card 04 media to authentic Costa Brava retreat working session (`cadence-offsite-costa-brava`). Outdoor table crop (`cadence-sanctuary-table`) removed. Card 4 returns to the standard 16:9 frame with `object-position: center 35%`. |
 | 9 Oct | Cadence card media: cards 1 to 4 now open with a flush 16:9 photo (peer board, sparring, finca courtyard, outdoor table) above a hairline divider, with a subtle zoom on hover; the ledger card stays typographic on navy. Four new image pairs added to `assets/photos/`. Nameplates blurred in the boardroom photo. Wide fourth card uses a 21:9 frame on desktop. |

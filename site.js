@@ -10,6 +10,7 @@
    6. Member Portal: modal, passcode, session, ledger
    7. Scroll reveal and staggered entrances
    8. FAQ accordion and "view all" toggle
+   9. The Round Charter drawer (Schedule 2)
 
    SECURITY NOTE
    The portal gate runs in the browser. The passcode is stored only as a
@@ -723,6 +724,66 @@
   })();
 
   /* ------------------------------------------------------------------------
+     THE ROUND CHARTER DRAWER
+     Opens from any [data-open-charter]. Escape, close button and backdrop
+     dismiss it; focus is trapped while open and the page cannot scroll.
+     ------------------------------------------------------------------------ */
+
+  const Charter = (() => {
+    const overlay = $('[data-charter-overlay]');
+    const drawer = $('[data-charter-modal]');
+    const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let returnFocus = null;
+
+    const anyOtherOverlayOpen = () => $$('.drawer-overlay, .modal-overlay').some((el) => el !== overlay && !el.hidden);
+
+    const onKeydown = (e) => {
+      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+      if (e.key !== 'Tab') return;
+      const items = $$(FOCUSABLE, drawer).filter((el) => el.offsetParent !== null);
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+
+    const open = (trigger) => {
+      if (!overlay) return;
+      Nav.close();
+      returnFocus = trigger || document.activeElement;
+      overlay.hidden = false;
+      document.body.classList.add('is-locked');
+      document.addEventListener('keydown', onKeydown);
+      requestAnimationFrame(() => drawer.focus());
+    };
+
+    const close = ({ restoreFocus = true } = {}) => {
+      if (!overlay || overlay.hidden) return;
+      overlay.hidden = true;
+      document.removeEventListener('keydown', onKeydown);
+      if (!anyOtherOverlayOpen()) document.body.classList.remove('is-locked');
+      if (restoreFocus && returnFocus && document.contains(returnFocus) && returnFocus.offsetParent !== null) returnFocus.focus();
+      returnFocus = null;
+    };
+
+    const init = () => {
+      if (!overlay) return;
+      document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-open-charter]');
+        if (trigger) { e.preventDefault(); open(trigger); return; }
+        if (e.target.closest('[data-charter-close]')) { e.preventDefault(); close(); return; }
+        // "Request Candidate Review" inside the Charter hands over to the application drawer.
+        if (!overlay.hidden && e.target.closest('[data-open-apply]') && overlay.contains(e.target)) close({ restoreFocus: false });
+      });
+      overlay.addEventListener('mousedown', (e) => { if (e.target === overlay) close(); });
+      if (location.hash === '#charter') open();
+    };
+
+    return { init };
+  })();
+
+  /* ------------------------------------------------------------------------
      INIT
      ------------------------------------------------------------------------ */
 
@@ -741,6 +802,7 @@
     Reveal.init();
     Nav.init();
     ApplyForm.init();
+    Charter.init();
     Portal.init();
   };
 
