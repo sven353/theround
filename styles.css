@@ -351,7 +351,7 @@ header.site.is-scrolled{box-shadow:0 8px 24px -20px rgba(var(--navy-rgb),.35);}
 .term-card dt{font-family:var(--font-body); font-weight:700; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--teal-on-dark); margin-bottom:14px;}
 .term-card dd{margin:0;}
 .term-value{font-family:var(--font-head); font-weight:800; font-size:1.9rem; line-height:1.15; color:#fff; margin-bottom:12px !important;}
-.term-value--text{font-size:1.15rem; font-weight:700; line-height:1.3;}
+.term-value--text{font-size:1.35rem; font-weight:700; line-height:1.25; color:#FFFFFF; overflow-wrap:break-word; hyphens:auto;}
 .term-unit{font-family:var(--font-body); font-weight:400; font-size:.95rem; color:var(--on-dark-muted);}
 .term-detail{font-size:.92rem; color:var(--on-dark-muted); padding-top:12px; border-top:var(--hairline) solid var(--hairline-dark); margin-top:auto !important;}
 .terms-cta{display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-top:44px;}

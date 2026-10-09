@@ -150,7 +150,7 @@ Section order and background cadence:
 | D | Proof ribbon (3 photos) | `#environment` | Cream (inside C) |
 | E | Facilitation Engine (4 cards) | `#facilitation` | White |
 | F | Standards of fit and cohort integrity | `#fit` | Cream |
-| G | Membership terms and investment | `#terms` | Navy radial |
+| G | Membership terms and governance | `#terms` | Navy radial |
 | H | FAQ (10 questions) | `#faq` | White |
 | I | Footer | | Cream |
 
@@ -167,14 +167,16 @@ Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, 
 | 24-Hour Immersion and 3 to 4 day Offsite, each replacing that month's board, programme and facilitation included | Cadence cards 3 and 4, terms, FAQ 6 |
 | Ledger data deleted within 30 days of departure | Cadence card 5, FAQ 7 |
 | Competitor exclusivity, non-solicitation, Chatham House beyond membership, AI only for anonymised prep | Integrity box, FAQ 3, 7, 8 |
-| €3,000 + VAT per 6-month period, billed in advance | Terms, FAQ 9, JSON-LD offer |
-| €1,000 admission fee, permanently waived for Founding Members (no expiry date) | Terms, FAQ 9, JSON-LD FAQ 9 |
+| Membership fee not published (Option B): fixed-cycle retainer in continuous 6-month periods, billed semi-annually in advance; full fee schedule disclosed during candidate review | Terms card 1, FAQ 9, JSON-LD offer and price range |
+| €1,000 admission and intake fee (diagnostic framing and onboarding), permanently waived for Founding Members | Terms card 2, FAQ 9, JSON-LD FAQ 9 |
 | 30 days' written notice before period end | Terms, FAQ 9 |
 | Barcelona 01 strictly capped at 12 seats, admission governed by cohort consent | Terms CTA note, application drawer |
-| Retreat travel, lodging and meals at cost, 60 days' notice | Terms, FAQ 6 |
+| Retreat facilitation included in the retainer, travel and lodging at cost | Terms card 4, FAQ 6 |
 | More than three missed sessions per year triggers a review | FAQ 10 |
 
 Any change to these terms must be made in the visible copy and in the JSON-LD block (section 5).
+
+Pricing policy (Option B): the membership fee is deliberately kept off the public site, out of the JSON-LD and out of this repository. Only the €1,000 admission fee is published. Do not reintroduce the fee figure in copy, schema or documentation.
 
 ---
 
@@ -216,7 +218,7 @@ Netlify detects the form from the static HTML on each deploy. Set up email notif
 ## 5. SEO and GEO
 
 - Title, description, canonical, Open Graph and Twitter card tags in `<head>`, previewing `assets/og-image.jpg`.
-- JSON-LD `@graph` with `Organization` (Kuma Partners), `ProfessionalService` (The Round, with founder, address, price range and offer) and `FAQPage` (all 10 questions).
+- JSON-LD `@graph` with `Organization` (Kuma Partners), `ProfessionalService` (The Round, with founder and address; the offer carries currency and billing period but no price, and `priceRange` reads "Executive Advisory Retainer · Disclosed on Review") and `FAQPage` (all 10 questions).
 - The FAQPage answers use exactly the same wording as the visible answers, as Google requires. All 10 answers are in the static HTML so crawlers and AI tools can read them.
 - FAQ 4 describes traditional CEO peer networks generically. No third-party network is named anywhere on the site or in this repository.
 
@@ -273,6 +275,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 9 Oct | Refactored #terms to Option B: transitioned subscription fee to candidate-review disclosure to enhance executive exclusivity and alignment with high-touch advisory positioning. New eyebrow, lead and four governance cards; FAQ 9 rewritten in HTML and JSON-LD; numeric price removed from the JSON-LD offer; `.term-value--text` enlarged to 1.35rem. |
 | 9 Oct | Updated Card 04 media to authentic Costa Brava retreat working session (`cadence-offsite-costa-brava`). Outdoor table crop (`cadence-sanctuary-table`) removed. Card 4 returns to the standard 16:9 frame with `object-position: center 35%`. |
 | 9 Oct | Cadence card media: cards 1 to 4 now open with a flush 16:9 photo (peer board, sparring, finca courtyard, outdoor table) above a hairline divider, with a subtle zoom on hover; the ledger card stays typographic on navy. Four new image pairs added to `assets/photos/`. Nameplates blurred in the boardroom photo. Wide fourth card uses a 21:9 frame on desktop. |
 | 9 Oct | Exclusivity and terms update: admission fee raised to €1,000 and permanently waived for Founding Members; date-gating removed from the page and from `site.js`; terms subhead and scarcity note (12 seats, cohort consent) rewritten; all calls to action renamed to Candidate Review; drawer headline and intro rewritten; FAQ 4 rewritten without naming any third-party network (HTML and JSON-LD); FAQ 9 updated in HTML and JSON-LD. Buttons now wrap on phones so the longer labels fit. |
