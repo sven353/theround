@@ -263,6 +263,8 @@ header.site.is-scrolled{box-shadow:0 8px 24px -20px rgba(var(--navy-rgb),.35);}
 .cadence-card .card-media img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease;}
 .cadence-card:hover .card-media img{transform:scale(1.03);}
 .cadence-card .card-content{display:flex; flex-direction:column; flex:1; padding:28px 24px 32px;}
+/* Card 3 (Catalonia masia): porch, poolside terrace and greenery in frame */
+.cadence-card:nth-child(3) .card-media img{object-position:center 60%;}
 /* Card 4 (Costa Brava offsite): keep the table, the sailboat canvas and the room in frame */
 .cadence-card:nth-child(4) .card-media img{object-position:center 35%;}
 .cadence-card--featured{padding:32px 28px;}

@@ -55,16 +55,15 @@ Photo source files and their web names:
 | IMG_1814.jpeg | round-alpine-sanctuary | Sanctuary & Headspace · Secluded Nature Environments |
 | The Round monthly meeting 1.jpeg | cadence-peer-board | Card 1: cropped to 16:9, desk nameplates blurred |
 | Sven Mulfinger Listening.png | cadence-sparring-barcelona | Card 2: cropped to 16:9 |
-| Finca collage (bottom-right tile) | cadence-immersion-patio | Card 3: tile extracted, upscaled to 854 px |
+| Masia cataluña.jpeg (full resolution) | cadence-immersion-patio | Card 3: cropped to 16:9 at 60% from the top, `object-position: center 60%` |
 | Offsite meeting Costa Brava.jpeg | cadence-offsite-costa-brava | Card 4: cropped to 16:9 at 35% from the top, `object-position: center 35%` |
 
-Source files were renamed (no spaces or accents) and resized for the web (1024 px wide, or 854 px for the finca tile).
+Source files were renamed (no spaces or accents) and resized for the web (1024 px wide).
 
-The finca courtyard image comes from a small collage and is upscaled, so it looks soft at large sizes. Replace it with the original high-resolution photo when available, keeping the same file name.
 
 ### Cadence card media rationale
 
-Cards 1 to 4 carry a flush 16:9 photo above a hairline divider, anchoring each format in a real room or retreat setting: the boardroom, the 1:1 conversation, the finca courtyard and the Costa Brava offsite working session. Card 5, the Member Accountability Ledger, carries no photo and stays on the navy radial: it is the digital execution layer, and the contrast marks the shift from rooms to record. In place of a photo it shows an illustrative ledger panel (two anonymised entries with context, action, due date, sparring partner and status), a quote from The Round Charter, and two actions: "View The Round Charter (Schedule 2)" opens the Charter drawer, "Member Sign-In" opens the portal. The ledger entries are static illustrations, not live data.
+Cards 1 to 4 carry a flush 16:9 photo above a hairline divider, anchoring each format in a real room or retreat setting: the boardroom, the 1:1 conversation, the Catalonia masia terrace and the Costa Brava offsite working session. Card 5, the Member Accountability Ledger, carries no photo and stays on the navy radial: it is the digital execution layer, and the contrast marks the shift from rooms to record. In place of a photo it shows an illustrative ledger panel (two anonymised entries with context, action, due date, sparring partner and status), a quote from The Round Charter, and two actions: "View The Round Charter (Schedule 2)" opens the Charter drawer, "Member Sign-In" opens the portal. The ledger entries are static illustrations, not live data.
 
 ---
 
@@ -263,7 +262,7 @@ Netlify detects the form from the static HTML on each deploy. Set up email notif
 
 ## 9. Open items
 
-- Replace the upscaled finca image (`cadence-immersion-patio`) with a high-resolution original, and confirm usage rights for it.
+- Confirm usage rights for the masia photo (`cadence-immersion-patio`).
 - Confirm that everyone recognisable in `cadence-offsite-costa-brava` has agreed to appear on the site.
 - Confirm that everyone recognisable in `cadence-peer-board` has agreed to appear on the site.
 - Replace `LEDGER` sample rows with real (anonymised) entries once the cohort starts.
@@ -277,6 +276,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 9 Oct | Updated Card 03 media to high-resolution Catalonia masia terrace photograph (`cadence-immersion-patio`). Alt text updated; `object-position: center 60%`. |
 | 9 Oct | Updated Hero headline and subhead to authoritative positioning ('Built for those who carry the ultimate call'). Synchronized OpenGraph and meta descriptions. JSON-LD service description updated. |
 | 9 Oct | Card 05 redesigned: operating-compact pill, new subtitle, illustrative ledger telemetry panel (two anonymised entries with status pills), Charter quote, and two actions (Charter, Member Sign-In). New The Round Charter drawer with the 11 points of Schedule 2 and a GDPR note. Charter link added to the footer. |
 | 9 Oct | Refactored #terms to Option B: transitioned subscription fee to candidate-review disclosure to enhance executive exclusivity and alignment with high-touch advisory positioning. New eyebrow, lead and four governance cards; FAQ 9 rewritten in HTML and JSON-LD; numeric price removed from the JSON-LD offer; `.term-value--text` enlarged to 1.35rem. |
