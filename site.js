@@ -10,6 +10,7 @@
    6. Member Portal: modal, passcode, session, ledger
    7. Scroll reveal and staggered entrances
    8. Date-gated terms (Founding Member admission waiver)
+   9. FAQ accordion and "view all" toggle
 
    SECURITY NOTE
    The portal gate runs in the browser. The passcode is stored only as a
@@ -666,6 +667,75 @@
   };
 
   /* ------------------------------------------------------------------------
+     9. FAQ
+     One answer open at a time. Questions 5 to 10 always stay in the HTML
+     for crawlers; the toggle only controls whether they are shown.
+     ------------------------------------------------------------------------ */
+
+  const Faq = (() => {
+    const root = $('#faq');
+
+    const setOpen = (item, open) => {
+      item.classList.toggle('open', open);
+      const btn = $('.faq-question', item);
+      if (btn) btn.setAttribute('aria-expanded', String(open));
+    };
+
+    const init = () => {
+      if (!root) return;
+      const items = $$('.faq-item', root);
+      const extended = $('#faq-extended', root);
+      const toggle = $('[data-faq-toggle]', root);
+      const toggleText = $('[data-faq-toggle-text]', root);
+      const toggleArrow = $('[data-faq-toggle-arrow]', root);
+
+      items.forEach((item) => {
+        const btn = $('.faq-question', item);
+        btn.addEventListener('click', () => {
+          const willOpen = !item.classList.contains('open');
+          items.forEach((other) => { if (other !== item) setOpen(other, false); });
+          setOpen(item, willOpen);
+        });
+      });
+
+      const setExtended = (open) => {
+        extended.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggleText.textContent = open ? 'Show fewer questions' : `View all ${items.length} questions`;
+        toggleArrow.textContent = open ? '↑' : '↓';
+        if (!open) {
+          // Close any answer inside the hidden block so it reopens cleanly.
+          $$('.faq-item', extended).forEach((item) => setOpen(item, false));
+        }
+      };
+
+      if (extended && toggle) {
+        toggle.addEventListener('click', () => {
+          const willOpen = !extended.classList.contains('open');
+          setExtended(willOpen);
+          if (!willOpen) {
+            const top = root.getBoundingClientRect().top;
+            if (top < 0) root.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+          }
+        });
+      }
+
+      // Deep links such as #faq-q7 open the right answer.
+      const m = location.hash.match(/^#faq-q(\d+)$/);
+      if (m) {
+        const btn = document.getElementById(`faq-q${m[1]}`);
+        if (btn) {
+          const item = btn.closest('.faq-item');
+          if (extended && extended.contains(item)) setExtended(true);
+          items.forEach((other) => setOpen(other, other === item));
+        }
+      }
+    };
+
+    return { init };
+  })();
+
+  /* ------------------------------------------------------------------------
      INIT
      ------------------------------------------------------------------------ */
 
@@ -673,6 +743,7 @@
     $$('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
     initLogoFallback();
     initDateGates();
+    Faq.init();
     Reveal.init();
     Nav.init();
     ApplyForm.init();
