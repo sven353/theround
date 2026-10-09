@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Round | Executive Peer Operating System by Kuma Partners</title>
-<meta name="description" content="A confidential operating system for founders and CEOs: monthly advisory boards, 1:1 sparring, immersive offsites, and structured accountability.">
+<title>The Round | Confidential Executive Peer Board for Founders &amp; CEOs · Kuma Partners</title>
+<meta name="description" content="A confidential, year-round operating rhythm for Founders, CEOs and Managing Directors: a monthly peer board in Barcelona, 1:1 sparring, two retreats a year and a private accountability ledger.">
 <link rel="canonical" href="https://theround.kuma.partners/">
 
 <!-- Favicons & App Icons -->
@@ -38,18 +38,43 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://theround.kuma.partners/#service",
-  "name": "The Round by Kuma Partners",
-  "serviceType": "Executive peer advisory board and strategic sparring for founders and CEOs",
-  "url": "https://theround.kuma.partners/",
-  "areaServed": "Europe",
-  "provider": {
-    "@type": "ProfessionalService",
-    "name": "Kuma Partners",
-    "url": "https://kuma.partners",
-    "email": "contact@kuma.partners"
-  }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://kuma.partners/#organization",
+      "name": "Kuma Partners",
+      "url": "https://kuma.partners",
+      "logo": "https://theround.kuma.partners/assets/logo-icon.png",
+      "email": "sven@kuma.partners",
+      "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://theround.kuma.partners/#service",
+      "name": "The Round by Kuma Partners",
+      "description": "Confidential executive peer board for Founders, CEOs and Managing Directors: a monthly in-person board in the Barcelona area, monthly 1:1 or pod sparring, a 24-hour immersion, an annual offsite and a private accountability ledger.",
+      "url": "https://theround.kuma.partners/",
+      "image": "https://theround.kuma.partners/assets/og-image.jpg",
+      "email": "sven@kuma.partners",
+      "areaServed": { "@type": "City", "name": "Barcelona" },
+      "parentOrganization": { "@id": "https://kuma.partners/#organization" },
+      "founder": { "@type": "Person", "name": "Dr. Sven Mulfinger" },
+      "makesOffer": {
+        "@type": "Offer",
+        "name": "The Round membership, Barcelona 01",
+        "priceCurrency": "EUR",
+        "price": "3000",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "3000",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false,
+          "billingDuration": "P6M",
+          "unitText": "per 6-month period, billed in advance"
+        }
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -57,7 +82,7 @@
 
 <a href="#main" class="skip-link">Skip to content</a>
 
-<!-- A. STICKY HEADER -->
+<!-- A. HEADER -->
 <header class="site" data-site-header>
   <div class="wrap nav-wrap">
     <nav class="nav" aria-label="Primary">
@@ -69,29 +94,22 @@
       </a>
 
       <div class="nav-panel" id="primary-nav" data-nav-drawer>
-      <div class="nav-panel-inner">
-      <ul class="nav-links">
-        <li><a href="#cadence" data-scroll>Operating Architecture</a></li>
-        <li><a href="#toolkit" data-scroll>Dynamic Toolkit</a></li>
-        <li><a href="#retreats" data-scroll>Retreats &amp; Offsites</a></li>
-        <li><a href="#caliber" data-scroll>Member Caliber</a></li>
-        <li class="nav-drawer-actions">
-          <button type="button" class="btn btn-secondary btn-block" data-open-portal>
-            <svg class="portal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <span>Member Portal</span>
-          </button>
-          <a href="#apply" class="btn btn-primary btn-block" data-scroll>Request a Seat</a>
-        </li>
-      </ul>
-      </div>
+        <div class="nav-panel-inner">
+          <ul class="nav-links">
+            <li><a href="#cadence" data-scroll>The Cadence</a></li>
+            <li><a href="#facilitation" data-scroll>Facilitation</a></li>
+            <li><a href="#proof" data-scroll>Proof</a></li>
+            <li><a href="#fit" data-scroll>Fit</a></li>
+            <li><a href="#terms" data-scroll>Membership Terms</a></li>
+            <li class="nav-drawer-actions">
+              <button type="button" class="btn btn-primary btn-block" data-open-apply>Apply for Barcelona 01</button>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="nav-actions">
-        <button type="button" class="btn btn-secondary btn-sm" data-open-portal>
-          <svg class="portal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          <span>Member Portal</span>
-        </button>
-        <a href="#apply" class="btn btn-primary btn-sm" data-scroll>Request a Seat</a>
+        <button type="button" class="btn btn-primary btn-sm" data-open-apply>Apply for Barcelona 01</button>
       </div>
 
       <button type="button" class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
@@ -108,101 +126,90 @@
   <!-- B. HERO (white) -->
   <section class="hero bg-white" aria-labelledby="hero-title">
     <div class="wrap hero-inner reveal-on-scroll">
-      <span class="badge-pill">Executive Peer Board · Strategic Sparring · Annual Cadence</span>
-      <h1 id="hero-title">Slow down with peers.<br>Execute without friction.</h1>
-      <p class="subhead">An integrated leadership operating system for founders and CEOs navigating scale. Monthly peer boards, 1:1 sparring, immersive offsites, and structured accountability to pressure-test critical calls.</p>
+      <span class="badge-pill">Confidential Executive Peer Board · Barcelona 01</span>
+      <h1 id="hero-title">When leadership is solitary,<br>we build your private board of peers.</h1>
+      <p class="subhead">A confidential, year-round operating rhythm for Founders, CEOs and Managing Directors navigating real scale and non-linear complexity.</p>
       <div class="hero-ctas">
-        <a href="#apply" class="btn btn-primary" data-scroll>Request a Guest Seat</a>
-        <a href="#cadence" class="btn-link" data-scroll>Explore the Annual Cadence →</a>
+        <button type="button" class="btn btn-primary" data-open-apply>Apply for Admission</button>
+        <a href="#cadence" class="btn btn-secondary" data-scroll>Explore Operating Architecture →</a>
       </div>
     </div>
   </section>
 
-  <!-- B2. PROOF STRIP (midnight navy) -->
-  <section class="proof-strip bg-navy" aria-label="The Round at a glance">
-    <div class="wrap">
-      <dl class="proof-facts reveal-stagger">
-        <div class="proof-fact"><dt>Peer board</dt><dd>Monthly</dd></div>
-        <div class="proof-fact"><dt>Sparring</dt><dd>1:1 &amp; pods</dd></div>
-        <div class="proof-fact"><dt>Retreats</dt><dd>2 per year</dd></div>
-        <div class="proof-fact"><dt>Ledger</dt><dd>Continuous</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- C. OPERATING ARCHITECTURE (off-white) -->
-  <section class="bg-alt" id="cadence" aria-labelledby="cadence-title">
+  <!-- C. CADENCE + D. PROOF RIBBON (cream) -->
+  <section class="bg-cream" id="cadence" aria-labelledby="cadence-title">
     <div class="wrap">
       <div class="section-head reveal-on-scroll">
         <p class="eyebrow">The operating architecture</p>
         <h2 id="cadence-title">A year-round cadence built for leaders at scale</h2>
-        <p class="lede">Leading a high-velocity business is cognitively isolating. The Round combines five formats into one operating rhythm, so strategic thinking keeps pace with execution.</p>
+        <p class="lede">Five formats combine into one operating rhythm, so strategic thinking keeps pace with execution.</p>
       </div>
 
       <div class="cadence-grid reveal-stagger">
         <article class="cadence-card" aria-labelledby="cad-board">
           <p class="cadence-freq">Monthly</p>
           <h3 id="cad-board">The Executive Peer Board</h3>
-          <p>In-person, closed-door working sessions with a curated cohort of founders and CEOs. High-density strategic sparring on live dilemmas, held under strict Chatham House confidentiality.</p>
+          <p>A 6-hour in-person working session held monthly in the Barcelona area, strictly capped at 8 to 12 vetted members.</p>
           <ul class="cadence-features">
-            <li>Facilitator-governed, zero unsolicited advice</li>
-            <li>Protocol chosen to fit the dilemma on the table</li>
+            <li>Members take turns hosting at their own companies and open with operational context</li>
+            <li>Breakfast and lunch provided by the host</li>
           </ul>
+          <p class="cadence-note">Chatham House Rule · Zero Direct Competitors</p>
         </article>
 
         <article class="cadence-card" aria-labelledby="cad-spar">
           <p class="cadence-freq">Monthly</p>
-          <h3 id="cad-spar">Strategic Sparring (1:1 &amp; Pods)</h3>
-          <p>Direct executive sparring with the facilitator between boards, plus curated 1:2 or 1:3 pods for leaders facing identical friction points such as founder transitions, M&amp;A integrations or restructuring.</p>
+          <h3 id="cad-spar">Strategic Sparring: 1:1 &amp; Pods</h3>
+          <p>A monthly 55-minute 1:1 sparring session with Dr. Sven Mulfinger between boards, to prepare live dilemmas and review commitments.</p>
           <ul class="cadence-features">
-            <li>A private sounding board for high-friction calls</li>
-            <li>Pods formed around shared inflection points</li>
+            <li>Rotates into 90-minute pods with 1–2 peers</li>
+            <li>Pods form around identical strategic or co-founder friction</li>
           </ul>
         </article>
 
         <article class="cadence-card" aria-labelledby="cad-24h">
           <p class="cadence-freq">Annual</p>
           <h3 id="cad-24h">The 24-Hour Immersion</h3>
-          <p>A secluded overnight retreat, one night and one full day, designed to break operational inertia and recalibrate your foundational trajectory away from operational noise.</p>
+          <p>A secluded overnight retreat, one night and one full day, designed to break operational inertia away from day-to-day noise.</p>
           <ul class="cadence-features">
-            <li>Structured reflection and peer dinners</li>
-            <li>Personal and business recalibration</li>
+            <li>Replaces the monthly board session for that cycle</li>
           </ul>
+          <p class="cadence-note">Program &amp; full facilitation included in membership fee</p>
         </article>
 
         <article class="cadence-card" aria-labelledby="cad-offsite">
           <p class="cadence-freq">Annual</p>
-          <h3 id="cad-offsite">The Executive Offsite &amp; Sanctuary</h3>
-          <p>A multi-day retreat in nature combining long-range vision mapping, executive stamina, systemic alignment and deep peer bonding.</p>
+          <h3 id="cad-offsite">The Annual Executive Offsite &amp; Sanctuary</h3>
+          <p>A 3- to 4-day deep retreat in nature combining vision mapping, systemic alignment and deep peer bonding.</p>
           <ul class="cadence-features">
-            <li>Venue chosen for mental bandwidth</li>
-            <li>Vision mapping and governance review</li>
+            <li>Replaces the monthly board session for that cycle</li>
           </ul>
+          <p class="cadence-note">Program &amp; full facilitation included in membership fee</p>
         </article>
 
         <article class="cadence-card cadence-card--featured" aria-labelledby="cad-ledger">
           <p class="cadence-freq">Continuous</p>
           <h3 id="cad-ledger">The Member Accountability Ledger</h3>
-          <p>A digital operating record that keeps commitments made in the room from evaporating. Explicit deadlines, assigned peer sparring partners and measured outcome ROI for every hard call.</p>
+          <p>A private digital operating record tracking named decisions, explicit deadlines and assigned peer check-in partners.</p>
           <ul class="cadence-features">
-            <li>Deadline tracking and partner check-ins</li>
-            <li>Private to members of the cohort</li>
+            <li>Zero evaporating promises</li>
+            <li>GDPR-compliant: member data is deleted within 30 days of leaving</li>
           </ul>
-          <button type="button" class="cadence-link" data-open-portal>Open the Member Portal →</button>
+          <button type="button" class="cadence-link" data-open-portal>Member access →</button>
         </article>
       </div>
 
-      <!-- Proof ribbon: the in-room and retreat environment -->
-      <div class="proof-ribbon reveal-on-scroll" aria-labelledby="proof-ribbon-title">
+      <!-- D. Proof ribbon -->
+      <div class="proof-ribbon reveal-on-scroll" id="proof" aria-labelledby="proof-ribbon-title">
         <p class="eyebrow eyebrow--sm">The In-Room &amp; Retreat Environment · Closed-Door Deliberations</p>
-        <h3 class="proof-ribbon-title" id="proof-ribbon-title">Intimate physical spaces designed for deep strategic focus, high candor, and zero operational distraction.</h3>
+        <h3 class="proof-ribbon-title" id="proof-ribbon-title">Intimate physical spaces designed for deep strategic focus, high candor and zero operational distraction.</h3>
 
         <div class="proof-ribbon-grid">
           <figure class="proof-photo">
             <div class="proof-photo-frame">
               <picture>
                 <source srcset="assets/photos/round-deliberation-catalonia.webp" type="image/webp">
-                <img src="assets/photos/round-deliberation-catalonia.jpg" alt="The Round executive peer board deliberation session around a boardroom table in Catalonia" width="1024" height="768" loading="lazy" decoding="async">
+                <img src="assets/photos/round-deliberation-catalonia.jpg" alt="Executive peer board deliberation session around a boardroom table in Catalonia" width="1024" height="768" loading="lazy" decoding="async">
               </picture>
             </div>
             <figcaption class="proof-photo-caption">Executive Board Deliberations · Closed-Door Sparring</figcaption>
@@ -222,7 +229,7 @@
             <div class="proof-photo-frame">
               <picture>
                 <source srcset="assets/photos/round-alpine-sanctuary.webp" type="image/webp">
-                <img src="assets/photos/round-alpine-sanctuary.jpg" alt="Secluded alpine mountain range sanctuary for executive retreats" width="1024" height="768" loading="lazy" decoding="async">
+                <img src="assets/photos/round-alpine-sanctuary.jpg" alt="Secluded alpine mountain range used as a sanctuary for executive retreats" width="1024" height="768" loading="lazy" decoding="async">
               </picture>
             </div>
             <figcaption class="proof-photo-caption">Sanctuary &amp; Headspace · Secluded Nature Environments</figcaption>
@@ -232,186 +239,141 @@
     </div>
   </section>
 
-  <!-- D. DYNAMIC TOOLKIT (white) -->
-  <section class="bg-white" id="toolkit" aria-labelledby="toolkit-title">
+  <!-- E. FACILITATION ENGINE (white) -->
+  <section class="bg-white" id="facilitation" aria-labelledby="facilitation-title">
     <div class="wrap">
       <div class="section-head reveal-on-scroll">
-        <p class="eyebrow">The dynamic facilitation toolkit</p>
-        <h2 id="toolkit-title">Forty-minute issue processing is one mode among several</h2>
-        <p class="lede">Every challenge calls for its own diagnostic lens. The facilitator rotates protocols across the year and adds an intelligence layer before and after each session.</p>
+        <p class="eyebrow">The Facilitation Engine · Adaptive Protocols</p>
+        <h2 id="facilitation-title">Structured deliberation. Zero circular debate.</h2>
+        <p class="lede">One rigid format cannot resolve every inflection point. We rotate dynamic facilitation protocols designed to isolate root friction, eliminate decision latency and turn tough calls into binding group accountability.</p>
       </div>
 
-      <ol class="toolkit-grid reveal-stagger">
-        <li class="toolkit-item">
-          <span class="toolkit-num" aria-hidden="true">01</span>
-          <h3>Adaptive Facilitation Protocols</h3>
-          <p>Rotating structures between rapid-fire 40-minute issue processing, systemic root-cause debriefs and silent deliberation rounds.</p>
+      <ol class="engine-grid reveal-stagger">
+        <li class="engine-card">
+          <p class="engine-meta"><span class="engine-num">01 / 04</span><span class="engine-kicker">Diagnostic Sensing</span></p>
+          <h3>Friction Telemetry &amp; Root-Cause Framing</h3>
+          <p>Surfacing unspoken team dynamics and hidden incentives.</p>
+          <span class="engine-tag">Root Bottleneck Isolated</span>
         </li>
-        <li class="toolkit-item">
-          <span class="toolkit-num" aria-hidden="true">02</span>
-          <h3>AI-Assisted Context Framing</h3>
-          <p>Pre-session synthesis that isolates the operational baseline, calculates the 90-day cost of inaction and surfaces hidden blind spots.</p>
+        <li class="engine-card">
+          <p class="engine-meta"><span class="engine-num">02 / 04</span><span class="engine-kicker">Adaptive Deliberation</span></p>
+          <h3>Dynamic Sparring Protocols</h3>
+          <p>Rapid-fire tests, silent written rounds and systemic debriefs.</p>
+          <span class="engine-tag">Calibrated to the Dilemma</span>
         </li>
-        <li class="toolkit-item">
-          <span class="toolkit-num" aria-hidden="true">03</span>
-          <h3>The Hard Call Archive</h3>
-          <p>An anonymised cohort decision database capturing trade-offs, playbooks and aftermath metrics from experienced operators.</p>
+        <li class="engine-card">
+          <p class="engine-meta"><span class="engine-num">03 / 04</span><span class="engine-kicker">Decision Acceleration</span></p>
+          <h3>Breaking Decision Latency</h3>
+          <p>Mapping 90-day costs of inaction and driving to an explicit choice.</p>
+          <span class="engine-tag">48-Hour Decision Velocity</span>
         </li>
-        <li class="toolkit-item">
-          <span class="toolkit-num" aria-hidden="true">04</span>
-          <h3>Closed-Loop Accountability</h3>
-          <p>A structured compact at the end of every session: a named decision, a non-negotiable target date and an assigned peer check-in partner.</p>
+        <li class="engine-card">
+          <p class="engine-meta"><span class="engine-num">04 / 04</span><span class="engine-kicker">Execution Compact</span></p>
+          <h3>Closed-Loop Peer Accountability</h3>
+          <p>A binding executive compact with named decisions, target dates and peer check-in partners.</p>
+          <span class="engine-tag">Zero Untracked Commitments</span>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- E. RETREATS & SANCTUARY (off-white) -->
-  <section class="bg-alt" id="retreats" aria-labelledby="retreats-title">
-    <div class="wrap">
-      <article class="retreat-card reveal-on-scroll">
-        <div class="retreat-copy">
-          <p class="eyebrow">Retreats &amp; sanctuary</p>
-          <h2 id="retreats-title">Step out of execution to sharpen your trajectory.</h2>
-          <p>Daily operations produce a steady cognitive fog: back-to-back meetings, reactive decisions and very little time to see the whole system. Twice a year, The Round removes members from that environment on purpose, so the slower thinking that shapes the next year can actually happen.</p>
-        </div>
-
-        <div class="retreat-compare reveal-stagger">
-          <div class="retreat-option">
-            <p class="retreat-tag">Rapid realignment</p>
-            <h3>The 24-Hour Immersion</h3>
-            <dl class="retreat-facts">
-              <div><dt>Format</dt><dd>One night, one full day</dd></div>
-              <div><dt>Focus</dt><dd>Break inertia and reset priorities</dd></div>
-              <div><dt>Setting</dt><dd>A secluded location</dd></div>
-            </dl>
-          </div>
-          <div class="retreat-option">
-            <p class="retreat-tag">Deep systemic reset</p>
-            <h3>The Annual Offsite</h3>
-            <dl class="retreat-facts">
-              <div><dt>Format</dt><dd>Multi-day, in nature</dd></div>
-              <div><dt>Focus</dt><dd>Long-range vision and alignment</dd></div>
-              <div><dt>Setting</dt><dd>Away from operational noise</dd></div>
-            </dl>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- F. MEMBER CALIBER (white) -->
-  <section class="bg-white" id="caliber" aria-labelledby="caliber-title">
+  <!-- F. STANDARDS OF FIT (cream) -->
+  <section class="bg-cream" id="fit" aria-labelledby="fit-title">
     <div class="wrap">
       <div class="section-head reveal-on-scroll">
-        <p class="eyebrow">Member caliber &amp; curation</p>
-        <h2 id="caliber-title">Who sits at The Round</h2>
-        <p class="lede">A peer table is only as valuable as the candor and commitment of the people around it. Every cohort is curated to protect that standard.</p>
+        <p class="eyebrow">Standards of fit · The Round Charter</p>
+        <h2 id="fit-title">Standards of fit and cohort integrity</h2>
+        <p class="lede">A peer board is only as strong as the people around the table. Every seat is vetted against The Round Charter.</p>
       </div>
 
-      <div class="caliber-grid reveal-stagger">
-        <article class="caliber-card caliber-card--fit" aria-labelledby="fit-title">
-          <p class="caliber-tag caliber-tag--fit">
+      <div class="fit-grid reveal-stagger">
+        <article class="fit-card fit-card--yes" aria-labelledby="fit-yes-title">
+          <p class="fit-tag fit-tag--yes">
             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-            The standard
+            Ideal cohort fit
           </p>
-          <h3 id="fit-title">Who belongs</h3>
-          <dl class="caliber-list">
-            <div><dt>Founders, CEOs &amp; Managing Directors</dt><dd>Leading organisations of 5 to 2,000 people.</dd></div>
-            <div><dt>International perspective</dt><dd>Operating across borders, cultures or rapid organisational change.</dd></div>
-            <div><dt>Radical candor &amp; emotional maturity</dt><dd>Able to put real tension on the table and hear hard feedback.</dd></div>
-            <div><dt>Principled tension</dt><dd>Willing to challenge peers firmly and hold mutual accountability.</dd></div>
-          </dl>
+          <h3 id="fit-yes-title">Who it is for</h3>
+          <ul class="fit-list">
+            <li>Active Founders, CEOs and Managing Directors carrying ultimate P&amp;L and strategic responsibility</li>
+            <li>High candor, low ego</li>
+            <li>Willing to show up on time for every session</li>
+          </ul>
         </article>
 
-        <article class="caliber-card caliber-card--out" aria-labelledby="out-title">
-          <p class="caliber-tag caliber-tag--out">
+        <article class="fit-card fit-card--no" aria-labelledby="fit-no-title">
+          <p class="fit-tag fit-tag--no">
             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-            Out of scope
+            Not a fit
           </p>
-          <h3 id="out-title">Who we do not admit</h3>
-          <dl class="caliber-list">
-            <div><dt>Sales &amp; BD prospecting</dt><dd>Anyone using the cohort as a pipeline.</dd></div>
-            <div><dt>Passive spectators</dt><dd>Leaders who attend without contributing to deliberation.</dd></div>
-            <div><dt>Pre-PMF ventures</dt><dd>Companies where execution bottlenecks have not yet emerged.</dd></div>
-            <div><dt>Advice-givers</dt><dd>People who prescribe quickly without deep inquiry first.</dd></div>
-          </dl>
+          <h3 id="fit-no-title">Who it is not for</h3>
+          <ul class="fit-list">
+            <li>Pure service providers</li>
+            <li>Transactional networkers</li>
+            <li>Unsolicited selling or pitching</li>
+            <li>Passive listeners</li>
+          </ul>
         </article>
+
+        <aside class="integrity-box" aria-labelledby="integrity-title">
+          <p class="eyebrow eyebrow--sm">Cohort integrity</p>
+          <h3 id="integrity-title" class="visually-hidden">Cohort integrity</h3>
+          <dl class="integrity-list">
+            <div>
+              <dt>Direct competitor exclusivity</dt>
+              <dd>The existing cohort reviews and consents to every new member's company and sector.</dd>
+            </div>
+            <div>
+              <dt>Human-first discretion</dt>
+              <dd>No recordings, no passive AI bots and strict Chatham House Rule. AI is used solely for anonymised pre-session preparation.</dd>
+            </div>
+          </dl>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- G. GUEST SEAT INTAKE (midnight navy) -->
-  <section class="bg-navy" id="apply" aria-labelledby="apply-title">
+  <!-- G. MEMBERSHIP TERMS (navy) -->
+  <section class="bg-navy" id="terms" aria-labelledby="terms-title">
     <div class="wrap">
-      <div class="apply-grid reveal-stagger">
-        <div class="apply-intro">
-          <p class="eyebrow">Guest seat</p>
-          <h2 id="apply-title">Experience The Round firsthand.</h2>
-          <p>Qualified founders and CEOs are invited to attend one session as a guest, to experience the tempo, the room and the rigor before any membership conversation.</p>
-          <ul class="reassurance">
-            <li><span class="reassurance-k">Discretion</span><span class="reassurance-v">Discussions are held under mutual NDA and the Chatham House Rule.</span></li>
-            <li><span class="reassurance-k">No obligation</span><span class="reassurance-v">Sit in on one Round. Membership is only discussed if there is mutual fit.</span></li>
-            <li><span class="reassurance-k">Peer protection</span><span class="reassurance-v">A direct competitor veto prevents conflicts of interest inside every cohort.</span></li>
-          </ul>
+      <div class="section-head reveal-on-scroll">
+        <p class="eyebrow">Membership terms &amp; investment</p>
+        <h2 id="terms-title">Clear terms, set out in advance</h2>
+        <p class="lede">The commercial terms below follow Schedule 1 of The Round Membership Agreement, Version 1.1.</p>
+      </div>
+
+      <dl class="terms-grid reveal-stagger">
+        <div class="term-card">
+          <dt>Standard membership fee</dt>
+          <dd class="term-value">€3,000 <span class="term-unit">+ VAT</span></dd>
+          <dd class="term-detail">Per 6-month period, billed in advance.</dd>
         </div>
-
-        <div class="form-card">
-          <form class="apply-form" name="the-round-apply" method="POST" action="/#apply" data-netlify="true" netlify-honeypot="bot-field" data-apply-form novalidate>
-            <input type="hidden" name="form-name" value="the-round-apply">
-            <p class="visually-hidden" aria-hidden="true">
-              <label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
-            </p>
-
-            <div class="field">
-              <label for="apply-name">Full name</label>
-              <input type="text" id="apply-name" name="name" autocomplete="name" required>
-              <span class="field-error" id="apply-name-error" role="alert"></span>
-            </div>
-
-            <div class="field">
-              <label for="apply-email">Work email</label>
-              <input type="email" id="apply-email" name="email" autocomplete="email" placeholder="name@company.com" required data-work-email aria-describedby="apply-email-hint">
-              <span class="field-hint" id="apply-email-hint">Please use your company domain, not a personal inbox.</span>
-              <span class="field-error" id="apply-email-error" role="alert"></span>
-            </div>
-
-            <div class="field">
-              <label for="apply-company">Company &amp; current stage / headcount</label>
-              <input type="text" id="apply-company" name="company_stage" autocomplete="organization" placeholder="Acme GmbH · 85 people · Series B" required>
-              <span class="field-error" id="apply-company-error" role="alert"></span>
-            </div>
-
-            <div class="field">
-              <label for="apply-tension">Current strategic tension or decision <span class="optional">optional</span></label>
-              <textarea id="apply-tension" name="tension" rows="4" maxlength="1200" placeholder="The decision on your desk, the options you are weighing, and what it costs to leave it open." aria-describedby="apply-tension-count"></textarea>
-              <span class="field-hint field-hint--count" id="apply-tension-count" data-char-count>0 / 1200</span>
-              <span class="field-error" id="apply-tension-error" role="alert"></span>
-            </div>
-
-            <div class="field field--check">
-              <input type="checkbox" id="apply-consent" name="privacy_consent" value="yes" required>
-              <label for="apply-consent">I agree that Kuma Partners may process this information to assess my application, in line with the <a href="https://kuma.partners/privacy.html">Privacy Policy</a>.</label>
-              <span class="field-error" id="apply-consent-error" role="alert"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block" data-submit-label="Request Guest Seat Invitation →">Request Guest Seat Invitation →</button>
-            <p class="form-microcopy">Every candidate is reviewed personally to protect cohort trust.</p>
-            <p class="form-status" role="status" aria-live="polite" data-form-status></p>
-          </form>
-
-          <div class="form-success" data-form-success hidden tabindex="-1">
-            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
-            <h3>Request received.</h3>
-            <p>Thank you. We will review your request against current cohort availability and reply personally from a kuma.partners address.</p>
-          </div>
+        <div class="term-card">
+          <dt>Admission fee</dt>
+          <dd class="term-value">€500</dd>
+          <dd class="term-detail" data-until="2026-10-15">Waived for Founding Members joining Barcelona 01 by 15 October 2026.</dd>
+          <dd class="term-detail" data-from="2026-10-16" hidden>One-off, payable on admission.</dd>
         </div>
+        <div class="term-card">
+          <dt>Operating cycle</dt>
+          <dd class="term-value">6 months</dd>
+          <dd class="term-detail">Continuous periods. Notice is due 30 days before the current period ends.</dd>
+        </div>
+        <div class="term-card">
+          <dt>Retreat inclusions</dt>
+          <dd class="term-value term-value--text">Program &amp; facilitation included</dd>
+          <dd class="term-detail">Travel, lodging and meals are covered separately at cost, with 60 days' notice.</dd>
+        </div>
+      </dl>
+
+      <div class="terms-cta reveal-on-scroll">
+        <button type="button" class="btn btn-primary" data-open-apply>Apply for Barcelona 01</button>
+        <p class="terms-cta-note">Barcelona 01 is capped at 12 members.</p>
       </div>
     </div>
   </section>
 </main>
 
-<!-- I. FOOTER (off-white) -->
+<!-- FOOTER (white) -->
 <footer class="site">
   <div class="wrap">
     <div class="footer-grid">
@@ -422,25 +384,31 @@
           <span class="brand-divider" aria-hidden="true">/</span>
           <span class="sub-brand">The Round</span>
         </a>
-        <p class="footer-blurb">Executive peer operating system for founders and CEOs.</p>
-        <a href="mailto:contact@kuma.partners" class="footer-email">contact@kuma.partners</a>
+        <p class="footer-blurb">Confidential executive peer board for Founders, CEOs and Managing Directors. Barcelona.</p>
+        <a href="mailto:sven@kuma.partners" class="footer-email">sven@kuma.partners</a>
       </div>
       <div>
         <h2 class="footer-h">The Round</h2>
         <ul>
-          <li><a href="#cadence" data-scroll>Operating Architecture</a></li>
-          <li><a href="#toolkit" data-scroll>Dynamic Toolkit</a></li>
-          <li><a href="#retreats" data-scroll>Retreats &amp; Offsites</a></li>
-          <li><a href="#caliber" data-scroll>Member Caliber</a></li>
+          <li><a href="#cadence" data-scroll>The Cadence</a></li>
+          <li><a href="#facilitation" data-scroll>Facilitation</a></li>
+          <li><a href="#fit" data-scroll>Fit</a></li>
+          <li><a href="#terms" data-scroll>Membership Terms</a></li>
         </ul>
       </div>
       <div>
         <h2 class="footer-h">Access</h2>
         <ul>
-          <li><a href="#apply" data-scroll>Request a Guest Seat</a></li>
-          <li><button type="button" class="footer-link-btn" data-open-portal>Member Portal Login</button></li>
-          <li><a href="https://kuma.partners">Kuma Partners main firm →</a></li>
-          <li><a href="https://kuma.partners/privacy.html">Privacy Policy</a></li>
+          <li><button type="button" class="footer-link-btn" data-open-apply>Apply for Barcelona 01</button></li>
+          <li><button type="button" class="footer-link-btn" data-open-portal>Member Portal</button></li>
+          <li><a href="https://kuma.partners">Kuma Partners →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-h">Legal</h2>
+        <ul>
+          <li><a href="https://kuma.partners/privacy.html">Privacy Policy (GDPR)</a></li>
+          <li><a href="https://kuma.partners/legal.html">Legal Notice / Imprint</a></li>
         </ul>
       </div>
     </div>
@@ -450,7 +418,88 @@
   </div>
 </footer>
 
-<!-- H. MEMBER PORTAL MODAL -->
+<!-- H. APPLICATION DRAWER -->
+<div class="drawer-overlay" data-apply-overlay hidden>
+  <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="apply-title" data-apply-drawer tabindex="-1">
+    <div class="drawer-head">
+      <div>
+        <p class="eyebrow eyebrow--sm">Barcelona 01 · Admission</p>
+        <h2 id="apply-title">Apply for a seat</h2>
+      </div>
+      <button type="button" class="modal-close" data-apply-close aria-label="Close application">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <p class="drawer-sub">Every application is read personally by Dr. Sven Mulfinger. Everything you share is treated as confidential and used only to assess fit.</p>
+
+      <form class="apply-form" name="the-round-apply" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-apply-form novalidate>
+        <input type="hidden" name="form-name" value="the-round-apply">
+        <p class="visually-hidden" aria-hidden="true">
+          <label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </p>
+
+        <div class="field">
+          <label for="apply-name">Name</label>
+          <input type="text" id="apply-name" name="name" autocomplete="name" required>
+          <span class="field-error" id="apply-name-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="apply-email">Work email</label>
+          <input type="email" id="apply-email" name="email" autocomplete="email" placeholder="name@company.com" required data-work-email aria-describedby="apply-email-hint">
+          <span class="field-hint" id="apply-email-hint">Please use your company domain, not a personal inbox.</span>
+          <span class="field-error" id="apply-email-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="apply-company">Company</label>
+          <input type="text" id="apply-company" name="company" autocomplete="organization" placeholder="Company name and headcount" required>
+          <span class="field-error" id="apply-company-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="apply-stage">Stage</label>
+          <div class="select-shell">
+            <select id="apply-stage" name="stage" required>
+              <option value="">Select your role and stage</option>
+              <option>Founder / CEO, Seed to Series A</option>
+              <option>Founder / CEO, Series B and beyond</option>
+              <option>CEO / MD, established or PE-backed company</option>
+              <option>Managing Director of an international group</option>
+            </select>
+            <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </div>
+          <span class="field-error" id="apply-stage-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="apply-challenge">Primary challenge <span class="optional">optional</span></label>
+          <textarea id="apply-challenge" name="challenge" rows="4" maxlength="1200" placeholder="The decision or friction you would bring to your first board." aria-describedby="apply-challenge-count"></textarea>
+          <span class="field-hint field-hint--count" id="apply-challenge-count" data-char-count>0 / 1200</span>
+        </div>
+
+        <div class="field field--check">
+          <input type="checkbox" id="apply-consent" name="privacy_consent" value="yes" required>
+          <label for="apply-consent">I agree that Kuma Partners may process this information to assess my application, in line with the <a href="https://kuma.partners/privacy.html">Privacy Policy</a>.</label>
+          <span class="field-error" id="apply-consent-error" role="alert"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" data-submit-label="Submit Application">Submit Application</button>
+        <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+      </form>
+
+      <div class="form-success" data-form-success hidden tabindex="-1">
+        <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+        <h3>Application received.</h3>
+        <p>Thank you. Dr. Sven Mulfinger will reply personally from sven@kuma.partners.</p>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- MEMBER PORTAL MODAL -->
 <div class="modal-overlay" id="portal-modal" data-portal-modal hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="portal-modal-title" data-portal-dialog>
     <button type="button" class="modal-close" data-portal-close aria-label="Close Member Portal">
@@ -473,7 +522,7 @@
         <p class="login-error" id="portal-error" role="alert" data-login-error></p>
         <button type="submit" class="btn btn-primary btn-block">Enter Dashboard</button>
       </form>
-      <p class="modal-foot">No passcode yet? Contact your facilitator at <a href="mailto:contact@kuma.partners?subject=The%20Round%20portal%20access">contact@kuma.partners</a>.</p>
+      <p class="modal-foot">No passcode yet? Contact your facilitator at <a href="mailto:sven@kuma.partners?subject=The%20Round%20portal%20access">sven@kuma.partners</a>.</p>
     </div>
 
     <!-- View 2: dashboard -->
@@ -518,6 +567,6 @@
 
 <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
 
-<script src="app.js" defer></script>
+<script src="site.js" defer></script>
 </body>
 </html>
