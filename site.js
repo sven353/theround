@@ -9,8 +9,7 @@
    5. Application drawer: open/close, focus trap, validation, Netlify AJAX
    6. Member Portal: modal, passcode, session, ledger
    7. Scroll reveal and staggered entrances
-   8. Date-gated terms (Founding Member admission waiver)
-   9. FAQ accordion and "view all" toggle
+   8. FAQ accordion and "view all" toggle
 
    SECURITY NOTE
    The portal gate runs in the browser. The passcode is stored only as a
@@ -357,7 +356,7 @@
             success.focus();
           })
           .catch(() => {
-            status(`We could not send your application just now. Please try again or write to ${CONFIG.contactEmail}.`, true);
+            status(`We could not send your submission just now. Please try again or write to ${CONFIG.contactEmail}.`, true);
           })
           .finally(() => {
             btn.disabled = false;
@@ -655,20 +654,7 @@
   })();
 
   /* ------------------------------------------------------------------------
-     8. DATE-GATED TERMS
-     Elements with data-until="YYYY-MM-DD" show up to and including that
-     date; elements with data-from="YYYY-MM-DD" show from that date on.
-     Keeps the Founding Member waiver from going stale after the deadline.
-     ------------------------------------------------------------------------ */
-
-  const initDateGates = () => {
-    const now = today();
-    $$('[data-until]').forEach((el) => { el.hidden = now > parseISO(el.dataset.until); });
-    $$('[data-from]').forEach((el) => { el.hidden = now < parseISO(el.dataset.from); });
-  };
-
-  /* ------------------------------------------------------------------------
-     9. FAQ
+     8. FAQ
      One answer open at a time. Questions 5 to 10 always stay in the HTML
      for crawlers; the toggle only controls whether they are shown.
      ------------------------------------------------------------------------ */
@@ -743,7 +729,6 @@
   const init = () => {
     $$('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
     initLogoFallback();
-    initDateGates();
     Faq.init();
 
     // This site sets no cookies and runs no tracking, so "Cookie Preferences"

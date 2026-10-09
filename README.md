@@ -140,7 +140,9 @@ Section order and background cadence:
 | H | FAQ (10 questions) | `#faq` | White |
 | I | Footer | | Cream |
 
-Overlays: the application drawer (slides in from the right) and the Member Portal modal.
+Overlays: the Candidate Review drawer (slides in from the right) and the Member Portal modal.
+
+Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, mobile menu and terms section; "Candidate Review" in the desktop header; "Request Candidate Review" in the footer. The drawer submit button reads "Submit for Review".
 
 ### Content sourced from The Round Membership Agreement, Version 1.1
 
@@ -152,8 +154,9 @@ Overlays: the application drawer (slides in from the right) and the Member Porta
 | Ledger data deleted within 30 days of departure | Cadence card 5, FAQ 7 |
 | Competitor exclusivity, non-solicitation, Chatham House beyond membership, AI only for anonymised prep | Integrity box, FAQ 3, 7, 8 |
 | €3,000 + VAT per 6-month period, billed in advance | Terms, FAQ 9, JSON-LD offer |
-| €500 admission fee, waived for Founding Members joining by 15 October 2026 | Terms, FAQ 9 (date-gated, see section 4) |
+| €1,000 admission fee, permanently waived for Founding Members (no expiry date) | Terms, FAQ 9, JSON-LD FAQ 9 |
 | 30 days' written notice before period end | Terms, FAQ 9 |
+| Barcelona 01 strictly capped at 12 seats, admission governed by cohort consent | Terms CTA note, application drawer |
 | Retreat travel, lodging and meals at cost, 60 days' notice | Terms, FAQ 6 |
 | More than three missed sessions per year triggers a review | FAQ 10 |
 
@@ -180,12 +183,11 @@ Modules:
 
 1. Header: shadow on scroll, mobile panel toggle, smooth scrolling with header offset, scroll-spy highlighting.
 2. Brand logo fallback: shows the text "Kuma Partners" if `logo-kuma.png` fails to load.
-3. Application drawer: opens from any `[data-open-apply]`, focus trap, Escape and backdrop close, body scroll lock, validation, Netlify AJAX submission, inline success state.
+3. Candidate Review drawer: opens from any `[data-open-apply]`, focus trap, Escape and backdrop close, body scroll lock, validation, Netlify AJAX submission, inline success state.
 4. Member Portal: passcode check against the hash, session in `sessionStorage`, lockout after 5 failed attempts, ledger table, logout.
 5. Scroll reveal and stagger via IntersectionObserver.
-6. Date gates: elements with `data-until="YYYY-MM-DD"` show up to and including that date; `data-from="YYYY-MM-DD"` show from that date. Used for the Founding Member waiver on the terms card and in FAQ 9.
-7. FAQ accordion: one answer open at a time; questions 5 to 10 sit in `#faq-extended` and are revealed by the "View all 10 questions" toggle; links like `#faq-q7` open that answer directly.
-8. Cookie Preferences: the site sets no cookies and no tracking, so the footer link shows a short explanatory note.
+6. FAQ accordion: one answer open at a time; questions 5 to 10 sit in `#faq-extended` and are revealed by the "View all 10 questions" toggle; links like `#faq-q7` open that answer directly.
+7. Cookie Preferences: the site sets no cookies and no tracking, so the footer link shows a short explanatory note.
 
 ### Netlify Forms
 
@@ -202,7 +204,7 @@ Netlify detects the form from the static HTML on each deploy. Set up email notif
 - Title, description, canonical, Open Graph and Twitter card tags in `<head>`, previewing `assets/og-image.jpg`.
 - JSON-LD `@graph` with `Organization` (Kuma Partners), `ProfessionalService` (The Round, with founder, address, price range and offer) and `FAQPage` (all 10 questions).
 - The FAQPage answers use exactly the same wording as the visible answers, as Google requires. All 10 answers are in the static HTML so crawlers and AI tools can read them.
-- The JSON-LD block is static and cannot date-gate. After 15 October 2026, remove the waiver sentence from FAQ 9 in the JSON-LD.
+- FAQ 4 describes traditional CEO peer networks generically. No third-party network is named anywhere on the site or in this repository.
 
 ---
 
@@ -243,8 +245,6 @@ Netlify detects the form from the static HTML on each deploy. Set up email notif
 
 ## 9. Open items
 
-- FAQ 4 names Vistage, YPO and EO. Confirm this is acceptable before launch, or replace with "traditional CEO peer networks".
-- After 15 October 2026, remove the admission-fee waiver sentence from FAQ 9 in the JSON-LD (the visible text switches automatically).
 - Replace `LEDGER` sample rows with real (anonymised) entries once the cohort starts.
 - Set `minutesPdfUrl` when the first minutes are available.
 
@@ -256,6 +256,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 9 Oct | Exclusivity and terms update: admission fee raised to €1,000 and permanently waived for Founding Members; date-gating removed from the page and from `site.js`; terms subhead and scarcity note (12 seats, cohort consent) rewritten; all calls to action renamed to Candidate Review; drawer headline and intro rewritten; FAQ 4 rewritten without naming any third-party network (HTML and JSON-LD); FAQ 9 updated in HTML and JSON-LD. Buttons now wrap on phones so the longer labels fit. |
 | 9 Oct | README added. Plain passcode removed from the `site.js` comment. Navigation renamed (The Cadence, Facilitation, Environment, Standards of Fit, FAQ) with collapse at 1100 px. Apple-style card gradients, hero wash, 2 px hover lift with teal border, navy focal shadow on the ledger card. Integrity box extended to three points (non-solicitation added). Application fields renamed. Cookie Preferences note added. |
 | 9 Oct | FAQ section (10 questions, accordion, "view all" toggle) and FAQPage JSON-LD added; footer moved to cream. |
 | 9 Oct | Restructured to Membership Agreement v1.1: new hero, detailed cadence cards, Facilitation Engine, standards of fit, membership terms, application drawer. `app.js` renamed to `site.js`. Contact changed to sven@kuma.partners. Founding Member waiver date-gated. |
