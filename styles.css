@@ -242,7 +242,8 @@ header.site.is-scrolled{box-shadow:0 8px 24px -20px rgba(var(--navy-rgb),.35);}
   padding:4px 11px; border-radius:var(--radius-pill); border:var(--hairline) solid rgba(var(--teal-rgb),.28); background:rgba(var(--teal-rgb),.06);
   font-family:var(--font-head); font-weight:600; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--teal);
 }
-.cadence-card > p:not(.cadence-freq):not(.cadence-note){font-size:.96rem; color:rgba(26,26,26,.8); margin-bottom:20px;}
+.cadence-card > p:not(.cadence-freq):not(.cadence-note),
+.card-content > p:not(.cadence-freq):not(.cadence-note){font-size:.96rem; color:rgba(26,26,26,.8); margin-bottom:20px;}
 .cadence-features{list-style:none; margin:auto 0 0; padding:16px 0 0; border-top:var(--hairline) solid var(--hairline-color);}
 .cadence-features li{position:relative; padding-left:18px; margin-bottom:6px; font-size:.88rem; color:var(--muted);}
 .cadence-features li::before{content:""; position:absolute; left:0; top:.78em; width:9px; height:1px; background:var(--teal);}
@@ -251,6 +252,20 @@ header.site.is-scrolled{box-shadow:0 8px 24px -20px rgba(var(--navy-rgb),.35);}
   font-family:var(--font-body); font-weight:700; font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--navy);
 }
 
+/* Cards 1-4: flush top photo, hairline divider, padded body.
+   Card 5 (ledger) stays typographic on the navy radial for contrast. */
+.cadence-card--media{padding:0; overflow:hidden;}
+.cadence-card .card-media{
+  position:relative; width:100%; aspect-ratio:16 / 9; overflow:hidden;
+  background:var(--hairline-color); border-bottom:var(--hairline) solid var(--hairline-color);
+}
+.cadence-card .card-media picture{display:block; width:100%; height:100%;}
+.cadence-card .card-media img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease;}
+.cadence-card:hover .card-media img{transform:scale(1.03);}
+.cadence-card .card-content{display:flex; flex-direction:column; flex:1; padding:28px 24px 32px;}
+/* The wide fourth card uses a letterbox frame on desktop so row two stays balanced */
+@media (min-width:961px){ .cadence-card:nth-child(4) .card-media{aspect-ratio:21 / 9;} }
+.cadence-card--featured{padding:32px 28px;}
 .cadence-card--featured{background:var(--navy); background-image:var(--navy-radial); border-color:var(--navy); box-shadow:var(--navy-focal-shadow); color:var(--on-dark);}
 .cadence-card--featured:hover{border-color:var(--teal); box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 24px 48px -20px rgba(11,21,35,.55);}
 .cadence-card--featured h3{color:#fff;}
@@ -657,6 +672,8 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
   .cadence-grid,.engine-grid,.terms-grid{grid-template-columns:1fr;}
   .cadence-card,.cadence-card:nth-child(4),.cadence-card:nth-child(5){grid-column:auto;}
   .cadence-card,.fit-card{padding:26px 22px;}
+  .cadence-card--media{padding:0;}
+  .cadence-card .card-content{padding:24px 22px 28px;}
   .integrity-box{padding:24px 22px;}
   .terms-cta{flex-direction:column; align-items:stretch; text-align:center;}
   .footer-grid{grid-template-columns:1fr 1fr;}
