@@ -73,52 +73,59 @@ Mirrors the design language of kuma.partners. All values live as CSS custom prop
 
 ### Colour tokens
 
+Design direction since 10 Oct 2026: Swiss print monograph meets private executive intelligence brief. Typography, whitespace and 1 px hairlines carry the structure. No drop shadows on cards, no floating pills.
+
 | Token | Value | Use |
 |---|---|---|
-| `--navy` | `#0B1523` (11, 21, 35) | Headings, primary buttons, navy sections |
+| `--navy` | `#0B1523` (11, 21, 35) | Headings, primary buttons, hero, terms, ledger card |
 | `--navy-hover` | `#16283D` | Primary button hover |
-| `--teal` | `#1D6F8A` (29, 111, 138) | Accents, eyebrow bar, links, buttons on navy |
-| `--teal-on-dark` | `#8DB7C5` | Small accent text on navy |
-| `--cream` | `#F8F9FA` | Alternate section background |
-| `--ink` | `#1A1A1A` | Body text |
-| `--muted` | `#5A6D7C` | Secondary text |
-| `--hairline-color` | `#E2E8F0` | Every border |
+| `--teal` | `#1D6F8A` (29, 111, 138) | Accents, eyebrow bar, mono tags on light surfaces |
+| `--teal-on-dark` | `#8DB7C5` | Subhead, mono tags and telemetry on navy |
+| `--paper` | `#FDFDFC` | Warm canvas paper, default light surface (`.bg-white`, body) |
+| `--cream` | `#F8F9FA` | Soft architectural cream, alternate sections |
+| `--white` | `#FFFFFF` | Cards, drawers, modals, inputs |
+| `--ink` | `#111827` | Body text |
+| `--muted` | `#5A6D7C` | Slate, secondary text |
+| `--hairline-color` | `rgba(0,0,0,.08)` | Every rule on light surfaces |
+| `--hairline-dark` | `rgba(255,255,255,.12)` | Every rule on navy |
+| `--card-border` | `rgba(0,0,0,.07)` | Cadence card outline |
 
 ### Surfaces
 
 | Token | Value |
 |---|---|
-| `--hero-wash` | `linear-gradient(180deg, rgba(29,111,138,.08) 0%, transparent 60%)` |
-| `--card-bg` | `linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%)` |
-| `--card-sheen` | `inset 0 1px 0 rgba(255,255,255,.9), 0 1px 3px rgba(11,21,35,.04)` |
-| `--card-lift` (hover) | `inset 0 1px 0 rgba(255,255,255,.9), 0 8px 24px -12px rgba(11,21,35,.12)` |
-| `--navy-radial` | `radial-gradient(120% 85% at 50% 0%, #152740 0%, #0B1523 100%)` |
-| `--navy-focal-shadow` | `inset 0 1px 0 rgba(255,255,255,.15), 0 18px 40px -20px rgba(11,21,35,.45)` |
+| `--navy-radial` | `radial-gradient(120% 85% at 50% 0%, #16283D 0%, #0B1523 100%)`, used by `.bg-navy` (hero, terms) and the ledger card |
+| `--card-bg` | `#FFFFFF`, flat |
+| `--card-sheen`, `--card-lift`, `--navy-focal-shadow` | `none` (kept as tokens so older selectors resolve cleanly) |
 
-Card hover: lift 2 px, teal border, `--card-lift` shadow, 0.2 s ease.
+Card hover: no lift. The outline darkens to navy at 24% and the photo zooms 3% with a slight contrast lift, 0.4 s `cubic-bezier(.16,1,.3,1)`.
 
 ### Typography
 
 | Role | Family | Weights |
 |---|---|---|
-| Headings, badges, card titles | Montserrat | 600, 700, 800 (line-height 1.15 to 1.3) |
-| Body, navigation, forms | Lato | 300, 400, 700 (line-height 1.6) |
-| Subheads and quotes | Montserrat italic, teal | 400 |
-| Counters, indices, metadata | `'SF Mono', 'Menlo', monospace` | |
+| Headings, card titles | Montserrat | 700, letter-spacing -0.02em to -0.012em, `text-wrap: balance` |
+| Hero h1 | Montserrat 700 | `clamp(2.4rem, 4.8vw, 4.2rem)`, max 22ch so it sets on two lines |
+| Body, navigation, forms | Lato | 400 and 700 (line-height 1.65) |
+| Hero subhead | Montserrat italic, teal-on-dark | 400 |
+| Charter quote | Lato italic | 400 |
+| Telemetry, status tags, frequencies, micro-specs, term labels, captions, scarcity note (`--font-mono`) | `ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace` | system fonts, nothing downloaded |
 
 Fonts are served from `assets/fonts/` via `@font-face`. Google Fonts is deliberately not used, because loading it sends every visitor's IP address to Google, which German courts have treated as a GDPR breach.
 
 ### Shape and rhythm
 
 - Every border is `1px solid var(--hairline-color)`. Never 2 px or 3 px.
-- Radii: `--radius-xs` 2 px (buttons, inputs), `--radius-sm` 4 px, `--radius-md` 6 px (cards), `--radius-lg` 8 px (panels, modals), `--radius-pill` 999 px (badges).
+- Radii: `--radius-xs`, `--radius-sm` and `--radius-md` are all 2 px (buttons, inputs, cards, tags); `--radius-lg` 4 px (modals). Bottom sheets on mobile use 16 px top corners. `--radius-pill` remains only for the FAQ plus icon.
+- De-boxed sections: fact strip, Facilitation Engine, fit spread and integrity compact, terms spec sheet. They use hairline rules (top, bottom and column dividers) instead of bordered cards.
 - Container: 1120 px max width, 32 px side padding (24 px at 960 px and below, 1.25rem / 20 px below 768 px).
 - Section padding: 96 px desktop, 80 px tablet, 64 px mobile.
 - Eyebrows: Lato 700, 0.78rem, uppercase, 0.12em tracking, navy, with a 28 × 3 px teal bar before.
 
 ### Motion
 
-- `.reveal-on-scroll`: fades in and rises 24 px, 650 ms `cubic-bezier(.2,.8,.2,1)`.
+- `.reveal-on-scroll`: fades in and rises 24 px, 650 ms `cubic-bezier(.16,1,.3,1)` (the single easing token `--ease-reveal`). No animation libraries.
+- Buttons: sharp 2 px corners, 0.25 s colour change and a 1 px press on `:active`.
 - `.reveal-stagger`: children enter at 0, 90, 180, 270 ms (fifth and later at 360 ms).
 - Collapsibles (mobile menu, FAQ answers, "view all" FAQ) animate `grid-template-rows` from `0fr` to `1fr`.
 - Hidden starting states only apply once `site.js` adds `class="js"` to `<html>`, so the page is fully readable without JavaScript.
@@ -157,8 +164,8 @@ Section order and background cadence:
 | # | Section | Anchor | Background |
 |---|---|---|---|
 | A | Header and navigation | | Translucent cream with blur |
-| B | Hero: "Built for those who carry the ultimate call." Subhead positions The Round as a confidential board of vetted peers for Founders, CEOs and Managing Directors bearing final P&L responsibility | | White with teal wash |
-| B2 | Fact strip "at a glance": six hairline cells (8–12 vetted peers, monthly 6-hour board, monthly 1:1 sparring, two annual retreats, Chatham House Rule, cohort consent). 3 × 2 on desktop, 2 × 3 below 768 px | `#glance` | Cream |
+| B (navy radial) | Hero: "Built for those who carry the ultimate call." Subhead positions The Round as a confidential board of vetted peers for Founders, CEOs and Managing Directors bearing final P&L responsibility | | White with teal wash |
+| B2 | Fact strip "at a glance": six hairline cells (8–12 vetted peers, monthly 6-hour board, monthly 1:1 sparring, two annual retreats, Chatham House Rule, cohort consent). 3 × 2 on desktop, 2 × 3 below 768 px | `#glance` | Paper |
 | C | Year-round cadence (4 photo cards + ledger card) | `#cadence` | Cream |
 | D | Proof ribbon (3 photos) | `#environment` | Cream (inside C) |
 | E | Facilitation Engine (4 cards) | `#facilitation` | White |
@@ -300,6 +307,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 10 Oct | Editorial design refactor. Tokens: paper `#FDFDFC`, ink `#111827`, hairlines `rgba(0,0,0,.08)`, system monospace stack, radii down to 2 px, easing `cubic-bezier(.16,1,.3,1)`, all card shadows removed. Hero moved onto the navy radial with a 2.4 to 4.2rem fluid h1 and a mono eyebrow. Pills replaced by mono tags (hero, cadence frequency, fit, engine, portal badges). Fact strip, Facilitation Engine, fit section, integrity compact and terms rebuilt as hairline layouts without boxes; fit is a 7:5 asymmetric spread with a vertical rule. Ledger telemetry restyled as a terminal with `[STATUS: …]` and `[DUE: …]` tags; Charter quote in Lato italic. Terms values tabular, scarcity note in mono (`// Barcelona 01 capped at 12 seats · Admission by cohort consent`). Mobile layer (below 768 px) updated for the new dividers. Netlify form markup and `site.js` untouched. |
 | 10 Oct | Editorial reduction across `index.html`: new hero subhead (adds Managing Directors and P&L responsibility); new `#glance` fact strip under the hero; cadence cards cut to one paragraph plus a micro-spec line each; fit section rewritten as a two-column filter; terms lead and card details tightened ("Waived for Founding Members of Barcelona 01"); drawer eyebrow, intro and submit label reframed as an admission review, plus a privacy line. Meta description, OG/Twitter text and the JSON-LD service description synchronised. CSS: new section 07b (fact strip), `.fit-text`, `.form-privacy`, mobile rules for the strip; unused `.cadence-features` and `.fit-list` rules removed. `site.js` submit-label fallback updated. |
 | 10 Oct | Mobile refactor below 768 px: stacked hero with full-width CTA, cadence swipe carousel with scroll snap and swipe hint, stacked telemetry badges, compact 2 × 2 terms grid, bottom-sheet drawers and portal with safe-area padding, 44 px close buttons, 16 px inputs, 1.25rem gutter. Non-breaking spaces keep "Barcelona 01" and trailing arrows together. New `SwipeHint` module in `site.js`. Desktop (768 px and up) verified pixel-identical. |
 | 9 Oct | Netlify form hardening: raw `netlify` attribute added next to `data-netlify`, honeypot paragraph hidden inline, `form-name` re-asserted in the AJAX payload, failure status logged to the console. README now documents enabling form detection in Netlify. |
