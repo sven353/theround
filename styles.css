@@ -90,13 +90,13 @@
   --radius-md:2px;
   --radius-lg:4px;
   --radius-pill:999px;
-  /* Soft geometry for the cadence cards, ledger anchor and terminal */
-  --radius-card:20px;
-  --radius-anchor:24px;
-  --radius-inset:16px;
-  --shadow-ambient:0 10px 30px -4px rgba(15,23,42,.05);
-  --shadow-ambient-hover:0 16px 36px -4px rgba(15,23,42,.08);
-  --shadow-anchor:0 24px 48px -12px rgba(11,21,35,.35);
+  /* Understated edge softening for the cadence cards, ledger anchor and terminal */
+  --radius-card:8px;
+  --radius-anchor:10px;
+  --radius-inset:6px;
+  --shadow-ambient:0 4px 16px rgba(15,23,42,.04);
+  --shadow-ambient-hover:0 8px 24px rgba(15,23,42,.07);
+  --shadow-anchor:0 16px 40px -8px rgba(11,21,35,.3);
 
   /* Layout */
   --max:1120px;
@@ -259,12 +259,12 @@ header.site.is-scrolled{box-shadow:0 8px 24px -20px rgba(var(--navy-rgb),.35);}
 .cadence-touchpoints-grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:2rem; margin-bottom:2.5rem;}
 .cadence-card{
   display:flex; flex-direction:column; overflow:hidden; isolation:isolate; /* isolation keeps the zooming photo clipped to the curve in Safari */
-  background:#FFFFFF; border:var(--hairline) solid rgba(15,23,42,.07); border-radius:var(--radius-card);
+  background:#FFFFFF; border:var(--hairline) solid rgba(15,23,42,.08); border-radius:var(--radius-card);
   box-shadow:var(--shadow-ambient);
-  transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s cubic-bezier(.16,1,.3,1), border-color .25s cubic-bezier(.16,1,.3,1);
+  transition:transform .2s ease, box-shadow .2s ease;
 }
 .cadence-card:hover{transform:translateY(-2px); box-shadow:var(--shadow-ambient-hover);}
-.cadence-media{position:relative; width:100%; aspect-ratio:16 / 9; overflow:hidden; background:var(--navy); border-bottom:var(--hairline) solid rgba(15,23,42,.07); border-radius:var(--radius-card) var(--radius-card) 0 0;}
+.cadence-media{position:relative; width:100%; aspect-ratio:16 / 9; overflow:hidden; background:var(--navy); border-bottom:var(--hairline) solid rgba(15,23,42,.07); border-radius:calc(var(--radius-card) - 1px) calc(var(--radius-card) - 1px) 0 0;}
 .cadence-media picture{display:block; width:100%; height:100%;}
 .cadence-media img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s cubic-bezier(.16,1,.3,1), filter .4s cubic-bezier(.16,1,.3,1);}
 .cadence-card:hover .cadence-media img{transform:scale(1.03); filter:contrast(1.04) saturate(1.04);}
@@ -302,7 +302,7 @@ header.site.is-scrolled{box-shadow:0 8px 24px -20px rgba(var(--navy-rgb),.35);}
 .btn-link-dim:hover{color:#fff; border-bottom-color:#fff;}
 
 /* Terminal telemetry (illustrative entries) */
-.telemetry-terminal{background:rgba(11,21,35,.85); border:var(--hairline) solid rgba(255,255,255,.12); border-radius:var(--radius-inset); box-shadow:inset 0 1px 1px rgba(255,255,255,.06); overflow:hidden; padding:1.75rem;}
+.telemetry-terminal{background:rgba(11,21,35,.85); border:var(--hairline) solid rgba(255,255,255,.1); border-radius:var(--radius-inset); overflow:hidden; padding:1.75rem;}
 .terminal-header{display:flex; align-items:center; gap:8px; padding-bottom:16px; margin-bottom:20px; border-bottom:var(--hairline) solid rgba(255,255,255,.1);}
 .terminal-dot{flex-shrink:0; width:7px; height:7px; border-radius:50%; background:var(--teal-on-dark);}
 .terminal-title{font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--teal-on-dark);}
@@ -765,7 +765,7 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
     scroll-padding:0 var(--gutter); scrollbar-width:none; -ms-overflow-style:none;
   }
   .cadence-touchpoints-grid::-webkit-scrollbar{display:none;}
-  :root{--radius-card:16px; --radius-anchor:20px; --radius-inset:14px;}
+  :root{--radius-anchor:8px;} /* cards stay 8px and the terminal 6px; the anchor tightens from 10px */
   .cadence-card{flex:0 0 85vw; max-width:340px; scroll-snap-align:center;}
   .cadence-content{padding:1.5rem 1.25rem 1.75rem;}
   .cadence-title{font-size:1.15rem;}

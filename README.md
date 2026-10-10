@@ -112,8 +112,8 @@ Fonts are served from `assets/fonts/` via `@font-face`. Google Fonts is delibera
 ### Shape and rhythm
 
 - Every border is `1px solid var(--hairline-color)`. Never 2 px or 3 px.
-- Radii: `--radius-xs`, `--radius-sm` and `--radius-md` are all 2 px (buttons, inputs, tags); `--radius-lg` 4 px (modals). Soft geometry for the cadence layer: `--radius-card` 20 px (touchpoint cards, photos clip to the top curve), `--radius-anchor` 24 px (ledger anchor), `--radius-inset` 16 px (terminal); below 768 px these become 16, 20 and 14 px. Bottom sheets on mobile use 16 px top corners. `--radius-pill` remains only for the FAQ plus icon.
-- Elevation: only the cadence cards (`--shadow-ambient`, lifting 2 px on hover to `--shadow-ambient-hover`) and the ledger anchor (`--shadow-anchor`) carry soft ambient shadows; the terminal has a 1 px inner highlight. Everything else stays shadow-free.
+- Radii: `--radius-xs`, `--radius-sm` and `--radius-md` are all 2 px (buttons, inputs, tags); `--radius-lg` 4 px (modals). Understated edge softening for the cadence layer: `--radius-card` 8 px (touchpoint cards; photos clip at 7 px, one pixel inside the border), `--radius-anchor` 10 px (ledger anchor, 8 px below 768 px), `--radius-inset` 6 px (terminal). No capsule or bubble corners anywhere. Bottom sheets on mobile use 16 px top corners. `--radius-pill` remains only for the FAQ plus icon.
+- Elevation: only the cadence cards (`--shadow-ambient` 0 4px 16px at 4%, lifting 2 px on hover to 0 8px 24px at 7%) and the ledger anchor (`--shadow-anchor`) carry soft ambient shadows. Everything else, the terminal included, stays shadow-free.
 - De-boxed sections: fact strip, Facilitation Engine pipeline, fit compact and guarantee strip, terms spec sheet. They use hairline rules (top, bottom and column dividers) instead of bordered cards.
 - Container: 1120 px max width, 32 px side padding (24 px at 960 px and below, 1.25rem / 20 px below 768 px).
 - Section padding: 96 px desktop, 80 px tablet, 64 px mobile.
@@ -311,6 +311,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 10 Oct | Radii dialled back to an understated 6 to 10 px standard: cards 8 px (photo corners 7 px), ledger anchor 10 px (8 px on mobile), terminal 6 px; lighter ambient shadows, terminal inner highlight removed. CSS only, `index.html` untouched. |
 | 10 Oct | Card 03 image re-saved at native resolution and high quality as `masia-catalunya-immersion` (both `<source>` and `<img>` updated, old `cadence-immersion-patio` files removed) to bypass the 7-day asset cache; alt text now mentions the dining area. Soft geometry for the cadence layer: 20 px cards with ambient shadow and 2 px hover lift, 24 px ledger anchor with soft elevation, 16 px terminal with inner highlight; 16/20/14 px on mobile. Grids, form and responsive flows unchanged. |
 | 10 Oct | Card 03 image replaced with the sharp, high-resolution Catalonia retreat version (same file names, `.webp` and `.jpg`, exact 16:9). Alt text updated to "Secluded Catalonia masia retreat patio, seating area and covered outdoor kitchen". Card structure, layout and mobile snap unchanged. |
 | 10 Oct | Clarified monthly board duration to specify inclusion of private working lunch across Fact Strip, Cadence Card 01, and Facilitation Engine header. |
