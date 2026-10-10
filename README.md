@@ -179,7 +179,7 @@ Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, 
 
 | Item | Where it appears |
 |---|---|
-| Monthly 6-hour board, Barcelona area, 8 to 12 members, rotating hosts (breakfast and lunch now only in the FAQ) | Fact strip, cadence card 1, FAQ 1, 2, 5 |
+| Monthly 6-hour board (including private working lunch), hosted in rotation at members' private headquarters in the Barcelona area, 8 to 12 members. FAQ 5 adds that the host provides the meeting room, breakfast and lunch | Fact strip cell 02, cadence card 1, Facilitation Engine stat block, FAQ 1, 2, 5 |
 | Monthly 55-minute 1:1 with Dr. Sven Mulfinger, 90-minute pods with 1 to 2 peers | Fact strip, cadence card 2, FAQ 1 |
 | 24-Hour Immersion and 3 to 4 day Offsite, each replacing that month's board, programme and facilitation included | Cadence cards 3 and 4, terms, FAQ 6 |
 | Ledger data deleted within 30 days of departure | Charter drawer privacy note, FAQ 7 |
@@ -194,7 +194,7 @@ Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, 
 
 Any change to these terms must be made in the visible copy and in the JSON-LD block (section 5).
 
-Editorial standard ("Content-First Editorial Reduction", 10 Oct 2026): the page reads as a private board memorandum, not a sales presentation. Cadence cards carry one short paragraph plus a single mono footer tag (`.cadence-footer-tag`), no bullet lists. Fit criteria open with a bold lead-in anchor and colon (`.fit-specs li strong`) for fast scanning; this is the one deliberate exception to the no-bold-label rule, requested on 10 Oct 2026. Admission language is collaborative: cohort consent, never veto rights. Keep new copy to that density, use UK grammar without the serial comma and never claim data is "encrypted" beyond what is true (the connection is HTTPS).
+Editorial standard ("Content-First Editorial Reduction", 10 Oct 2026): the page reads as a private board memorandum, not a sales presentation. Cadence cards carry one short paragraph plus a single mono footer tag (`.cadence-footer-tag`), no bullet lists. Fit criteria open with a bold lead-in anchor and colon (`.fit-specs li strong`) for fast scanning; this is the one deliberate exception to the no-bold-label rule, requested on 10 Oct 2026. Admission language is collaborative: cohort consent, never veto rights. The board lunch is always a "private working lunch", never framed as networking or social time. Keep new copy to that density, use UK grammar without the serial comma and never claim data is "encrypted" beyond what is true (the connection is HTTPS).
 
 Pricing policy (Option B): the membership fee is deliberately kept off the public site, out of the JSON-LD and out of this repository. Only the €1,000 admission fee is published. Do not reintroduce the fee figure in copy, schema or documentation.
 
@@ -308,6 +308,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 10 Oct | Clarified monthly board duration to specify inclusion of private working lunch across Fact Strip, Cadence Card 01, and Facilitation Engine header. |
 | 10 Oct | Candidate Review drawer and FAQ contact: the FAQ sidebar's mailto link is replaced by a drawer trigger ("Request Candidate Review & Confidential Diagnostic"), so FAQ inquiries route into the form. Drawer intro shortened; "Stage" becomes "Leadership context" with seven options (adds acquisition/searcher, active merger, exited founder and family business); inflection point is now a two-line field, 600 characters, no counter; field labels set in mono caps. Netlify form tag, honeypot, hidden `form-name` and all field names unchanged (end-to-end submit tested). |
 | 10 Oct | Tone restoration on the new layout: guarantee strip now reads Cohort consent ("review and consent to every incoming candidate") instead of veto rights; fit criteria restored with bold lead-in anchors and revised copy (Total presence, Direct competitors, Commercial pitching, Passive observers); Card 04 title restored to "The Annual Executive Offsite & Sanctuary"; terminal actionable status set to amber `#D97706`, active stays teal-on-dark. Layout (2 × 2 cadence, ledger anchor, connected pipeline, no photo strip) unchanged. |
 | 10 Oct | Integrated Improvements 1–4: elevated Fact Strip indexes, Facilitation Engine horizontal pipeline, bilateral Standards of Fit governance grid, and symmetrical 2x2 Cadence touchpoints with full-width Ledger anchor span. Detail: proof ribbon and its three photo pairs removed, "Environment" dropped from header and footer navigation; section backgrounds re-sequenced (cream facts, paper cadence, cream facilitation, paper fit); `SwipeHint` in `site.js` now targets `.cadence-touchpoints-grid`; old cadence, engine, fit and proof-ribbon CSS retired. Netlify form markup unchanged (verified by diff). |
