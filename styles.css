@@ -760,13 +760,14 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
   /* One 1.25rem side gutter for every section below 768px */
   :root{--gutter:1.25rem;}
 
-  /* Hero: 96px 1.25rem 48px (side padding comes from the container gutter) */
-  .hero{padding:96px 0 48px;}
-  #hero-title{font-size:clamp(1.85rem, 7.5vw, 2.25rem); line-height:1.15; margin-bottom:14px;}
-  .hero .subhead{font-size:1.02rem; line-height:1.5; margin-bottom:24px;}
-  .hero-ctas{flex-direction:column; align-items:stretch; width:100%; gap:14px;}
-  .hero-ctas .btn-primary{width:100%; justify-content:center; text-align:center;}
-  .hero-ctas .btn-link{align-self:center; text-align:center;}
+  /* Hero: primary CTA above the fold (side padding comes from the container gutter) */
+  .hero{padding-block:92px 40px;}
+  #hero-title{font-size:clamp(1.85rem, 7.5vw, 2.25rem); line-height:1.15; margin-bottom:12px;}
+  .hero .subhead{font-size:1.02rem; line-height:1.5; margin-bottom:22px;}
+  .hero-ctas{flex-direction:column; align-items:stretch; width:100%; gap:12px;}
+  .hero-ctas .btn-primary{width:100%; min-height:48px; justify-content:center; text-align:center;}
+  .hero-ctas .btn-link{align-self:center; display:inline-flex; align-items:center; min-height:44px; padding-bottom:0; text-align:center;
+    border-bottom:none; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px; text-decoration-color:rgba(255,255,255,.35);}
 
   /* Fact strip: 2 x 3 compact grid */
   .section-facts{padding:32px 0;}
@@ -789,8 +790,8 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
     flex:0 0 85vw; max-width:340px; grid-column:auto; scroll-snap-align:center;
   }
   .mobile-swipe-hint{
-    display:block; margin:8px 0 0; text-align:center;
-    font-size:.75rem; letter-spacing:.02em; color:#64748B;
+    display:block; margin:4px 0 0; text-align:center;
+    font-size:.75rem; letter-spacing:.04em; color:#64748B;
     transition:opacity var(--dur-collapse, .3s) ease;
   }
   .mobile-swipe-hint.is-dismissed{opacity:0;}
@@ -800,13 +801,14 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
   .telemetry-header{flex-direction:column-reverse; align-items:flex-start; gap:6px;}
   .telemetry-action{font-size:.88rem; line-height:1.4;}
 
-  /* Terms: compact 2 x 2 grid */
-  .terms-grid{grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px;}
-  .term-card,.term-card + .term-card{padding:18px 12px 18px 0;}
-  .term-card:nth-child(even){padding-left:12px; border-left:var(--hairline) solid var(--hairline-dark);}
+  /* Terms: compact 2 x 2 spec sheet. Gap stays 0 so the hairline dividers
+     run unbroken; the 10px breathing room comes from cell padding. */
+  .terms-grid{grid-template-columns:repeat(2, minmax(0,1fr)); gap:0;}
+  .term-card,.term-card + .term-card{padding:16px 10px 16px 0;}
+  .term-card:nth-child(even){padding-left:10px; border-left:var(--hairline) solid var(--hairline-dark);}
   .term-card:nth-child(odd){border-left:none;}
   .term-card:nth-child(n+3){border-top:var(--hairline) solid var(--hairline-dark);}
-  .term-value,.term-value--text{font-size:1.15rem; line-height:1.25; margin-bottom:8px !important;}
+  .term-value,.term-value--text{font-size:1.1rem; line-height:1.2; margin-bottom:6px !important;}
   .term-detail{font-size:.78rem; line-height:1.35; padding-top:10px;}
 
   /* Drawers and portal as bottom sheets */
@@ -835,9 +837,10 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
   .modal-close{width:44px; height:44px;}
   .modal .modal-close{top:10px; right:10px;}
   .field input,.field textarea,.field select{font-size:16px;}
+
+  @keyframes sheetIn{from{transform:translateY(100%);}to{transform:translateY(0);}}
 }
 
-@keyframes sheetIn{from{transform:translateY(100%);}to{transform:translateY(0);}}
 
 /* ---------- 18 Reduced motion & print ---------- */
 @media (prefers-reduced-motion: reduce){
