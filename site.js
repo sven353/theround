@@ -367,7 +367,7 @@
           })
           .finally(() => {
             btn.disabled = false;
-            btn.textContent = btn.dataset.submitLabel || 'Submit for Review';
+            btn.textContent = btn.dataset.submitLabel || 'Submit for Candidate Review';
           });
       });
     };

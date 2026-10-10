@@ -157,37 +157,40 @@ Section order and background cadence:
 | # | Section | Anchor | Background |
 |---|---|---|---|
 | A | Header and navigation | | Translucent cream with blur |
-| B | Hero: "Built for those who carry the ultimate call." Subhead positions The Round as a confidential board of peers for Founders and CEOs bearing final responsibility | | White with teal wash |
+| B | Hero: "Built for those who carry the ultimate call." Subhead positions The Round as a confidential board of vetted peers for Founders, CEOs and Managing Directors bearing final P&L responsibility | | White with teal wash |
+| B2 | Fact strip "at a glance": six hairline cells (8–12 vetted peers, monthly 6-hour board, monthly 1:1 sparring, two annual retreats, Chatham House Rule, cohort consent). 3 × 2 on desktop, 2 × 3 below 768 px | `#glance` | Cream |
 | C | Year-round cadence (4 photo cards + ledger card) | `#cadence` | Cream |
 | D | Proof ribbon (3 photos) | `#environment` | Cream (inside C) |
 | E | Facilitation Engine (4 cards) | `#facilitation` | White |
-| F | Standards of fit and cohort integrity | `#fit` | Cream |
+| F | Standards of fit: two-column filter ("Who sits at the table" / "Who is kept out") plus the cohort integrity box | `#fit` | Cream |
 | G | Membership terms and governance | `#terms` | Navy radial |
 | H | FAQ (10 questions) | `#faq` | White |
 | I | Footer | | Cream |
 
 Overlays: the Candidate Review drawer and The Round Charter drawer (both slide in from the right and share the `.drawer` styles), and the Member Portal modal. The Charter drawer lists all 11 points of Schedule 2 and ends with a Candidate Review button that hands over to the application drawer. It also opens from the footer and from the `#charter` link.
 
-Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, mobile menu and terms section; "Candidate Review" in the desktop header; "Request Candidate Review" in the footer. The drawer submit button reads "Submit for Review".
+Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, mobile menu and terms section; "Candidate Review" in the desktop header; "Request Candidate Review" in the footer. The drawer eyebrow reads "Barcelona 01 · Candidate admission review" and the submit button "Submit for Candidate Review". A privacy line under the button says candidate information is sent over an encrypted connection, treated under Chatham House discretion and never shared.
 
 ### Content sourced from The Round Membership Agreement, Version 1.1
 
 | Item | Where it appears |
 |---|---|
-| Monthly 6-hour board, Barcelona area, 8 to 12 members, rotating hosts with breakfast and lunch | Cadence card 1, FAQ 1, 2, 5 |
-| Monthly 55-minute 1:1 with Dr. Sven Mulfinger, 90-minute pods with 1 to 2 peers | Cadence card 2, FAQ 1 |
+| Monthly 6-hour board, Barcelona area, 8 to 12 members, rotating hosts (breakfast and lunch now only in the FAQ) | Fact strip, cadence card 1, FAQ 1, 2, 5 |
+| Monthly 55-minute 1:1 with Dr. Sven Mulfinger, 90-minute pods with 1 to 2 peers | Fact strip, cadence card 2, FAQ 1 |
 | 24-Hour Immersion and 3 to 4 day Offsite, each replacing that month's board, programme and facilitation included | Cadence cards 3 and 4, terms, FAQ 6 |
 | Ledger data deleted within 30 days of departure | Charter drawer privacy note, FAQ 7 |
 | The Round Charter, Schedule 2 (11 points) | Charter drawer, quote on cadence card 5 |
-| Competitor exclusivity, non-solicitation, Chatham House beyond membership, AI only for anonymised prep | Integrity box, FAQ 3, 7, 8 |
+| Competitor exclusivity, non-solicitation, Chatham House beyond membership, AI only for anonymised prep | Fact strip, fit filter, integrity box, FAQ 3, 7, 8 |
 | Membership fee not published (Option B): fixed-cycle retainer in continuous 6-month periods, billed semi-annually in advance; full fee schedule disclosed during candidate review | Terms card 1, FAQ 9, JSON-LD offer and price range |
 | €1,000 admission and intake fee (diagnostic framing and onboarding), permanently waived for Founding Members | Terms card 2, FAQ 9, JSON-LD FAQ 9 |
 | 30 days' written notice before period end | Terms, FAQ 9 |
-| Barcelona 01 strictly capped at 12 seats, admission governed by cohort consent | Terms CTA note, application drawer |
+| Barcelona 01 strictly capped at 12 seats, admission governed by cohort consent | Fact strip, terms CTA note, application drawer |
 | Retreat facilitation included in the retainer, travel and lodging at cost | Terms card 4, FAQ 6 |
 | More than three missed sessions per year triggers a review | FAQ 10 |
 
 Any change to these terms must be made in the visible copy and in the JSON-LD block (section 5).
+
+Editorial standard ("Content-First Editorial Reduction", 10 Oct 2026): the page reads as a private board memorandum, not a sales presentation. Cadence cards carry one short paragraph plus a single micro-spec line (`.cadence-note`), no bullet lists. The fit columns are one paragraph each (`.fit-text`). Keep new copy to that density, use UK grammar without the serial comma and never claim data is "encrypted" beyond what is true (the connection is HTTPS).
 
 Pricing policy (Option B): the membership fee is deliberately kept off the public site, out of the JSON-LD and out of this repository. Only the €1,000 admission fee is published. Do not reintroduce the fee figure in copy, schema or documentation.
 
@@ -297,6 +300,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 10 Oct | Editorial reduction across `index.html`: new hero subhead (adds Managing Directors and P&L responsibility); new `#glance` fact strip under the hero; cadence cards cut to one paragraph plus a micro-spec line each; fit section rewritten as a two-column filter; terms lead and card details tightened ("Waived for Founding Members of Barcelona 01"); drawer eyebrow, intro and submit label reframed as an admission review, plus a privacy line. Meta description, OG/Twitter text and the JSON-LD service description synchronised. CSS: new section 07b (fact strip), `.fit-text`, `.form-privacy`, mobile rules for the strip; unused `.cadence-features` and `.fit-list` rules removed. `site.js` submit-label fallback updated. |
 | 10 Oct | Mobile refactor below 768 px: stacked hero with full-width CTA, cadence swipe carousel with scroll snap and swipe hint, stacked telemetry badges, compact 2 × 2 terms grid, bottom-sheet drawers and portal with safe-area padding, 44 px close buttons, 16 px inputs, 1.25rem gutter. Non-breaking spaces keep "Barcelona 01" and trailing arrows together. New `SwipeHint` module in `site.js`. Desktop (768 px and up) verified pixel-identical. |
 | 9 Oct | Netlify form hardening: raw `netlify` attribute added next to `data-netlify`, honeypot paragraph hidden inline, `form-name` re-asserted in the AJAX payload, failure status logged to the console. README now documents enabling form detection in Netlify. |
 | 9 Oct | Updated Card 03 media to high-resolution Catalonia masia terrace photograph (`cadence-immersion-patio`). Alt text updated; `object-position: center 60%`. |
