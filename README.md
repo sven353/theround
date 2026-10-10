@@ -40,19 +40,13 @@ The site is plain static HTML, CSS and vanilla JavaScript. There is no build ste
         ├── cadence-peer-board.webp / .jpg          Cadence card 1 (16:9)
         ├── cadence-sparring-barcelona.webp / .jpg  Cadence card 2 (16:9)
         ├── cadence-immersion-patio.webp / .jpg     Cadence card 3 (16:9)
-        ├── cadence-offsite-costa-brava.webp / .jpg Cadence card 4 (16:9)
-        ├── round-deliberation-catalonia.webp / .jpg  Proof ribbon
-        ├── round-terrace-immersion.webp / .jpg       Proof ribbon
-        └── round-alpine-sanctuary.webp / .jpg        Proof ribbon
+        └── cadence-offsite-costa-brava.webp / .jpg Cadence card 4 (16:9)
 ```
 
 Photo source files and their web names:
 
 | Source file | Web file | Caption |
 |---|---|---|
-| The round offsite Cataluña.png | round-deliberation-catalonia | Executive Board Deliberations · Closed-Door Sparring |
-| offsite bavaria 3.jpg | round-terrace-immersion | The 24-Hour Immersion · Deep Working Sessions |
-| IMG_1814.jpeg | round-alpine-sanctuary | Sanctuary & Headspace · Secluded Nature Environments |
 | The Round monthly meeting 1.jpeg | cadence-peer-board | Card 1: cropped to 16:9, desk nameplates blurred |
 | Sven Mulfinger Listening.png | cadence-sparring-barcelona | Card 2: cropped to 16:9 |
 | Masia cataluña.jpeg (full resolution) | cadence-immersion-patio | Card 3: cropped to 16:9 at 60% from the top, `object-position: center 60%` |
@@ -63,7 +57,9 @@ Source files were renamed (no spaces or accents) and resized for the web (1024 p
 
 ### Cadence card media rationale
 
-Cards 1 to 4 carry a flush 16:9 photo above a hairline divider, anchoring each format in a real room or retreat setting: the boardroom, the 1:1 conversation, the Catalonia masia terrace and the Costa Brava offsite working session. Card 5, the Member Accountability Ledger, carries no photo and stays on the navy radial: it is the digital execution layer, and the contrast marks the shift from rooms to record. In place of a photo it shows an illustrative ledger panel (two anonymised entries with context, action, due date, sparring partner and status), a quote from The Round Charter, and two actions: "View The Round Charter (Schedule 2)" opens the Charter drawer, "Member Sign-In" opens the portal. The ledger entries are static illustrations, not live data.
+The four in-person touchpoints (Board, Sparring, Immersion, Offsite) sit in a symmetrical 2 × 2 grid, each with a flush 16:9 photo, a mono meta line (`Monthly // 6 hours`), title, one paragraph and a mono footer tag. Card 05, the Member Accountability Ledger, spans the full width underneath on the navy radial: copy, Charter quote and the two actions (Charter drawer, Member Sign-In) on the left, a terminal-style panel with two anonymised entries on the right. The terminal footer labels the entries as illustrative; they are static, not live data.
+
+The former three-photo proof ribbon (`#environment`) was removed on 10 Oct 2026 as redundant with the card photos. Its three image pairs were deleted from `assets/photos/` and the "Environment" link left the header and footer navigation.
 
 ---
 
@@ -117,7 +113,7 @@ Fonts are served from `assets/fonts/` via `@font-face`. Google Fonts is delibera
 
 - Every border is `1px solid var(--hairline-color)`. Never 2 px or 3 px.
 - Radii: `--radius-xs`, `--radius-sm` and `--radius-md` are all 2 px (buttons, inputs, cards, tags); `--radius-lg` 4 px (modals). Bottom sheets on mobile use 16 px top corners. `--radius-pill` remains only for the FAQ plus icon.
-- De-boxed sections: fact strip, Facilitation Engine, fit spread and integrity compact, terms spec sheet. They use hairline rules (top, bottom and column dividers) instead of bordered cards.
+- De-boxed sections: fact strip, Facilitation Engine pipeline, fit compact and guarantee strip, terms spec sheet. They use hairline rules (top, bottom and column dividers) instead of bordered cards.
 - Container: 1120 px max width, 32 px side padding (24 px at 960 px and below, 1.25rem / 20 px below 768 px).
 - Section padding: 96 px desktop, 80 px tablet, 64 px mobile.
 - Eyebrows: Lato 700, 0.78rem, uppercase, 0.12em tracking, navy, with a 28 × 3 px teal bar before.
@@ -136,20 +132,22 @@ Fonts are served from `assets/fonts/` via `@font-face`. Google Fonts is delibera
 | Width | Change |
 |---|---|
 | 1100 px and below | Navigation collapses into the drop-down panel |
-| 1024 px and below | Engine and terms grids go to 2 columns |
-| 960 px and below | Cadence grid goes to 2 columns, ledger table stacks |
+| 1024 px and below | Facilitation pipeline and terms go to 2 columns (the pipeline line stays continuous per row) |
+| 960 px and below | Ledger anchor stacks (terminal under the copy), portal ledger table stacks |
 | 860 px and below | FAQ goes to one column |
-| 768 px and below | Proof ribbon, fit cards and integrity box go to one column |
 | 640 px and below | Older small-screen rules (typography, footer, dashboard metrics); most layout is now overridden by the block below |
-| 767 px and below | Mobile refactor (section 17b of `styles.css`): hero stacked with full-width CTA, cadence becomes a swipe carousel, telemetry badges stack, terms stay 2 × 2, drawers and portal become bottom sheets |
+| 767 px and below | Mobile layer (section 17b of `styles.css`): hero stacked with full-width CTA, fact strip in one column, cadence touchpoints and facilitation pipeline become swipe carousels, fit columns stack, terminal statuses stack, terms stay 2 × 2, drawers and portal become bottom sheets |
 
 ### Mobile layer (below 768 px)
 
-All mobile layout lives in one `@media (max-width: 767px)` block, section 17b, placed after the older responsive rules so it wins without `!important`. Nothing in it applies at 768 px or wider. Desktop at 768, 1024 and 1440 px was checked pixel for pixel against the previous build and is identical.
+All mobile layout lives in one `@media (max-width: 767px)` block, section 17b, placed after the older responsive rules so it wins without `!important`. Nothing in it applies at 768 px or wider.
 
 - Hero: `92px 0 40px` padding plus the 1.25rem gutter; h1 `clamp(1.85rem, 7.5vw, 2.25rem)`, 12 px below; subhead 1.02rem / 1.5, 22 px below; CTA group stacked with a 12 px gap, primary button full width at 48 px minimum height, secondary link centred with a 44 px tap target.
-- Cadence: `.cadence-grid` turns into a horizontal flex track with `scroll-snap-type: x mandatory`, hidden scrollbar and edge-to-edge bleed. Each card is `85vw` up to 340 px, snapped to centre, at its natural height. A `.mobile-swipe-hint` line sits under the track (hidden on desktop) and fades after the first swipe.
-- Card 5: status badge sits on its own row above the context line; telemetry padding 14px 12px.
+- Fact strip: one column, hairline between cells.
+- Cadence: `.cadence-touchpoints-grid` turns into a horizontal flex track with `scroll-snap-type: x mandatory`, hidden scrollbar and edge-to-edge bleed. Each card is `85vw` up to 340 px, snapped to centre. A `.mobile-swipe-hint` line sits under the track (hidden on desktop) and fades after the first swipe.
+- Card 05 ledger anchor: copy and terminal stack; each terminal status sits on its own row above the sector line.
+- Facilitation: header stacks; the 4-step pipeline becomes a snap carousel (78vw steps, max 300 px) with the connecting line kept continuous.
+- Standards of fit: the two columns and the guarantee strip stack; the vertical divider becomes a horizontal one.
 - Terms: 2 × 2 spec sheet with unbroken hairline dividers (gap 0, 10 px cell padding), values 1.1rem / 1.2, detail text 0.78rem / 1.35.
 - Overlays: the Candidate Review drawer, the Charter drawer and the Member Portal slide up from the bottom (`sheetIn` keyframe), 92dvh tall with a 92vh fallback, 16 px top radius, bottom padding includes `env(safe-area-inset-bottom)`. The overlays still toggle via the `hidden` attribute, so no JavaScript changed for this.
 - Touch: close buttons 44 × 44 px; form fields 16 px so iOS Safari does not zoom on focus.
@@ -163,13 +161,12 @@ Section order and background cadence:
 
 | # | Section | Anchor | Background |
 |---|---|---|---|
-| A | Header and navigation | | Translucent cream with blur |
-| B (navy radial) | Hero: "Built for those who carry the ultimate call." Subhead positions The Round as a confidential board of vetted peers for Founders, CEOs and Managing Directors bearing final P&L responsibility | | White with teal wash |
-| B2 | Fact strip "at a glance": six hairline cells (8–12 vetted peers, monthly 6-hour board, monthly 1:1 sparring, two annual retreats, Chatham House Rule, cohort consent). 3 × 2 on desktop, 2 × 3 below 768 px | `#glance` | Paper |
-| C | Year-round cadence (4 photo cards + ledger card) | `#cadence` | Cream |
-| D | Proof ribbon (3 photos) | `#environment` | Cream (inside C) |
-| E | Facilitation Engine (4 cards) | `#facilitation` | White |
-| F | Standards of fit: two-column filter ("Who sits at the table" / "Who is kept out") plus the cohort integrity box | `#fit` | Cream |
+| A | Header and navigation: The Cadence, Facilitation, Standards of Fit, FAQ | | Translucent cream with blur |
+| B | Hero: "Built for those who carry the ultimate call." Subhead positions The Round as a confidential board of vetted peers for Founders, CEOs and Managing Directors bearing final P&L responsibility | | Navy radial |
+| B2 | Fact strip "at a glance": six hairline cells, each with a mono index tag (`01 // Cohort`, `02 // Board`, `03 // Sparring`, `04 // Retreats`, `05 // Confidentiality`, `06 // Governance`), a Montserrat title and a slate line. 3 × 2 on desktop, one column below 768 px | `#glance` | Cream |
+| C | Operating architecture: symmetrical 2 × 2 grid of the four in-person touchpoints (Board, Sparring, Immersion, Offsite), then Card 05, the Member Accountability Ledger, as a full-width navy anchor with a terminal panel. The former 3-photo strip is gone | `#cadence` | Paper |
+| E | Facilitation Engine: split header (copy left, "6 Hours" metric right) above a connected 4-step pipeline: one continuous hairline with a teal node per step, standardised title height, mono outcome tags | `#facilitation` | Cream |
+| F | Standards of fit: bilateral governance compact, `[Admission mandate]` (Who sits at the table) against `[Unconditional exclusion]` (Who is kept out), each with a lead statement and three specs, separated by a vertical hairline; below it a two-item guarantee strip (Sector veto, Discretion compact) | `#fit` | Paper |
 | G | Membership terms and governance | `#terms` | Navy radial |
 | H | FAQ (10 questions) | `#faq` | White |
 | I | Footer | | Cream |
@@ -186,8 +183,8 @@ Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, 
 | Monthly 55-minute 1:1 with Dr. Sven Mulfinger, 90-minute pods with 1 to 2 peers | Fact strip, cadence card 2, FAQ 1 |
 | 24-Hour Immersion and 3 to 4 day Offsite, each replacing that month's board, programme and facilitation included | Cadence cards 3 and 4, terms, FAQ 6 |
 | Ledger data deleted within 30 days of departure | Charter drawer privacy note, FAQ 7 |
-| The Round Charter, Schedule 2 (11 points) | Charter drawer, quote on cadence card 5 |
-| Competitor exclusivity, non-solicitation, Chatham House beyond membership, AI only for anonymised prep | Fact strip, fit filter, integrity box, FAQ 3, 7, 8 |
+| The Round Charter, Schedule 2 (11 points) | Charter drawer, quote in the Card 05 ledger anchor |
+| Competitor exclusivity, non-solicitation, Chatham House beyond membership, AI only for anonymised prep | Fact strip, fit compact and guarantee strip, FAQ 3, 7, 8 |
 | Membership fee not published (Option B): fixed-cycle retainer in continuous 6-month periods, billed semi-annually in advance; full fee schedule disclosed during candidate review | Terms card 1, FAQ 9, JSON-LD offer and price range |
 | €1,000 admission and intake fee (diagnostic framing and onboarding), permanently waived for Founding Members | Terms card 2, FAQ 9, JSON-LD FAQ 9 |
 | 30 days' written notice before period end | Terms, FAQ 9 |
@@ -197,7 +194,7 @@ Call to action wording: "Request Candidate Review · Barcelona 01" in the hero, 
 
 Any change to these terms must be made in the visible copy and in the JSON-LD block (section 5).
 
-Editorial standard ("Content-First Editorial Reduction", 10 Oct 2026): the page reads as a private board memorandum, not a sales presentation. Cadence cards carry one short paragraph plus a single micro-spec line (`.cadence-note`), no bullet lists. The fit columns are one paragraph each (`.fit-text`). Keep new copy to that density, use UK grammar without the serial comma and never claim data is "encrypted" beyond what is true (the connection is HTTPS).
+Editorial standard ("Content-First Editorial Reduction", 10 Oct 2026): the page reads as a private board memorandum, not a sales presentation. Cadence cards carry one short paragraph plus a single mono footer tag (`.cadence-footer-tag`), no bullet lists. Fit specs use a mono label on its own line above the sentence (`.fit-spec-k`), never an inline bold label with a colon. Keep new copy to that density, use UK grammar without the serial comma and never claim data is "encrypted" beyond what is true (the connection is HTTPS).
 
 Pricing policy (Option B): the membership fee is deliberately kept off the public site, out of the JSON-LD and out of this repository. Only the €1,000 admission fee is published. Do not reintroduce the fee figure in copy, schema or documentation.
 
@@ -267,7 +264,7 @@ A 404 on submission means the form is not registered: repeat steps 1 and 2. The 
 
 ## 7. Deployment
 
-1. Unzip over your local copy of the repository. Unzipping does not delete files, so remove any file that no longer appears in the structure above (for example the old `app.js`).
+1. Unzip over your local copy of the repository. Unzipping does not delete files, so remove any file that no longer appears in the structure above. Current list to delete: the old `app.js`, `assets/photos/cadence-sanctuary-table.*` and, since 10 Oct 2026, `assets/photos/round-deliberation-catalonia.*`, `round-terrace-immersion.*` and `round-alpine-sanctuary.*`.
 2. Commit and push:
 
    ```bash
@@ -307,6 +304,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 10 Oct | Integrated Improvements 1–4: elevated Fact Strip indexes, Facilitation Engine horizontal pipeline, bilateral Standards of Fit governance grid, and symmetrical 2x2 Cadence touchpoints with full-width Ledger anchor span. Detail: proof ribbon and its three photo pairs removed, "Environment" dropped from header and footer navigation; section backgrounds re-sequenced (cream facts, paper cadence, cream facilitation, paper fit); `SwipeHint` in `site.js` now targets `.cadence-touchpoints-grid`; old cadence, engine, fit and proof-ribbon CSS retired. Netlify form markup unchanged (verified by diff). |
 | 10 Oct | Optimized mobile viewport (<768px): above-the-fold CTA stacking, horizontal cadence touch carousel, 2x2 terms grid, and native bottom-sheet modal drawers. Laptop/desktop views kept completely untouched. Detail: hero padding 92/40 px, h1 and subhead margins tightened, primary CTA min-height 48 px, secondary link 44 px tap target; swipe hint now reads "← Swipe to explore formats →"; terms values 1.1rem with unbroken hairline dividers; the `sheetIn` keyframe moved inside the mobile media query. Verified: every CSS rule outside `@media (max-width: 767px)` is byte-identical to the previous build, and desktop screenshots at 768, 1024 and 1440 px match apart from photo-decoding noise that also appears between two runs of the unchanged baseline. |
 | 10 Oct | Editorial design refactor. Tokens: paper `#FDFDFC`, ink `#111827`, hairlines `rgba(0,0,0,.08)`, system monospace stack, radii down to 2 px, easing `cubic-bezier(.16,1,.3,1)`, all card shadows removed. Hero moved onto the navy radial with a 2.4 to 4.2rem fluid h1 and a mono eyebrow. Pills replaced by mono tags (hero, cadence frequency, fit, engine, portal badges). Fact strip, Facilitation Engine, fit section, integrity compact and terms rebuilt as hairline layouts without boxes; fit is a 7:5 asymmetric spread with a vertical rule. Ledger telemetry restyled as a terminal with `[STATUS: …]` and `[DUE: …]` tags; Charter quote in Lato italic. Terms values tabular, scarcity note in mono (`// Barcelona 01 capped at 12 seats · Admission by cohort consent`). Mobile layer (below 768 px) updated for the new dividers. Netlify form markup and `site.js` untouched. |
 | 10 Oct | Editorial reduction across `index.html`: new hero subhead (adds Managing Directors and P&L responsibility); new `#glance` fact strip under the hero; cadence cards cut to one paragraph plus a micro-spec line each; fit section rewritten as a two-column filter; terms lead and card details tightened ("Waived for Founding Members of Barcelona 01"); drawer eyebrow, intro and submit label reframed as an admission review, plus a privacy line. Meta description, OG/Twitter text and the JSON-LD service description synchronised. CSS: new section 07b (fact strip), `.fit-text`, `.form-privacy`, mobile rules for the strip; unused `.cadence-features` and `.fit-list` rules removed. `site.js` submit-label fallback updated. |
