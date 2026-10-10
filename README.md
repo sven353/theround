@@ -39,7 +39,7 @@ The site is plain static HTML, CSS and vanilla JavaScript. There is no build ste
     └── photos/                       Each as WebP + JPEG fallback
         ├── cadence-peer-board.webp / .jpg          Cadence card 1 (16:9)
         ├── cadence-sparring-barcelona.webp / .jpg  Cadence card 2 (16:9)
-        ├── cadence-immersion-patio.webp / .jpg     Cadence card 3 (16:9)
+        ├── masia-catalunya-immersion.webp / .jpg   Cadence card 3 (16:9)
         └── cadence-offsite-costa-brava.webp / .jpg Cadence card 4 (16:9)
 ```
 
@@ -49,7 +49,7 @@ Photo source files and their web names:
 |---|---|---|
 | The Round monthly meeting 1.jpeg | cadence-peer-board | Card 1: cropped to 16:9, desk nameplates blurred |
 | Sven Mulfinger Listening.png | cadence-sparring-barcelona | Card 2: cropped to 16:9 |
-| Sharpened Catalonia retreat image supplied 10 Oct 2026 (1024 × 616) | cadence-immersion-patio | Card 3: cropped to exact 16:9 (1024 × 576, 24 px off the top, 16 px off the bottom); replaces the earlier soft masia file |
+| Sharpened Catalonia retreat image supplied 10 Oct 2026 (1024 × 616) | masia-catalunya-immersion | Card 3: cropped to exact 16:9 at native resolution (1024 × 576), saved at high quality (JPEG q93 without chroma subsampling, WebP q92). Renamed from `cadence-immersion-patio` so browsers and the Netlify CDN fetch it fresh |
 | Offsite meeting Costa Brava.jpeg | cadence-offsite-costa-brava | Card 4: cropped to 16:9 at 35% from the top, `object-position: center 35%` |
 
 Source files were renamed (no spaces or accents) and resized for the web (1024 px wide).
@@ -112,7 +112,8 @@ Fonts are served from `assets/fonts/` via `@font-face`. Google Fonts is delibera
 ### Shape and rhythm
 
 - Every border is `1px solid var(--hairline-color)`. Never 2 px or 3 px.
-- Radii: `--radius-xs`, `--radius-sm` and `--radius-md` are all 2 px (buttons, inputs, cards, tags); `--radius-lg` 4 px (modals). Bottom sheets on mobile use 16 px top corners. `--radius-pill` remains only for the FAQ plus icon.
+- Radii: `--radius-xs`, `--radius-sm` and `--radius-md` are all 2 px (buttons, inputs, tags); `--radius-lg` 4 px (modals). Soft geometry for the cadence layer: `--radius-card` 20 px (touchpoint cards, photos clip to the top curve), `--radius-anchor` 24 px (ledger anchor), `--radius-inset` 16 px (terminal); below 768 px these become 16, 20 and 14 px. Bottom sheets on mobile use 16 px top corners. `--radius-pill` remains only for the FAQ plus icon.
+- Elevation: only the cadence cards (`--shadow-ambient`, lifting 2 px on hover to `--shadow-ambient-hover`) and the ledger anchor (`--shadow-anchor`) carry soft ambient shadows; the terminal has a 1 px inner highlight. Everything else stays shadow-free.
 - De-boxed sections: fact strip, Facilitation Engine pipeline, fit compact and guarantee strip, terms spec sheet. They use hairline rules (top, bottom and column dividers) instead of bordered cards.
 - Container: 1120 px max width, 32 px side padding (24 px at 960 px and below, 1.25rem / 20 px below 768 px).
 - Section padding: 96 px desktop, 80 px tablet, 64 px mobile.
@@ -268,7 +269,9 @@ A 404 on submission means the form is not registered: repeat steps 1 and 2. The 
 
 ## 7. Deployment
 
-1. Unzip over your local copy of the repository. Unzipping does not delete files, so remove any file that no longer appears in the structure above. Current list to delete: the old `app.js`, `assets/photos/cadence-sanctuary-table.*` and, since 10 Oct 2026, `assets/photos/round-deliberation-catalonia.*`, `round-terrace-immersion.*` and `round-alpine-sanctuary.*`.
+1. Unzip over your local copy of the repository. Unzipping does not delete files, so remove any file that no longer appears in the structure above. Current list to delete: the old `app.js`, `assets/photos/cadence-sanctuary-table.*` and, since 10 Oct 2026, `assets/photos/round-deliberation-catalonia.*`, `round-terrace-immersion.*`, `round-alpine-sanctuary.*` and `cadence-immersion-patio.*`.
+
+   Caching: `_headers` caches everything under `/assets/` for 7 days. When an image changes, give it a new file name (as done for `masia-catalunya-immersion`), otherwise returning visitors keep seeing the old one for up to a week.
 2. Commit and push:
 
    ```bash
@@ -294,7 +297,7 @@ A 404 on submission means the form is not registered: repeat steps 1 and 2. The 
 
 ## 9. Open items
 
-- Confirm usage rights for the Card 3 image (`cadence-immersion-patio`). If it was AI-generated or AI-enhanced rather than photographed at the actual retreat venue, decide whether the card should say so or use a real photo of the venue.
+- Confirm usage rights for the Card 3 image (`masia-catalunya-immersion`). If it was AI-generated or AI-enhanced rather than photographed at the actual retreat venue, decide whether the card should say so or use a real photo of the venue.
 - Confirm that everyone recognisable in `cadence-offsite-costa-brava` has agreed to appear on the site.
 - Confirm that everyone recognisable in `cadence-peer-board` has agreed to appear on the site.
 - Replace `LEDGER` sample rows with real (anonymised) entries once the cohort starts.
@@ -308,6 +311,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 10 Oct | Card 03 image re-saved at native resolution and high quality as `masia-catalunya-immersion` (both `<source>` and `<img>` updated, old `cadence-immersion-patio` files removed) to bypass the 7-day asset cache; alt text now mentions the dining area. Soft geometry for the cadence layer: 20 px cards with ambient shadow and 2 px hover lift, 24 px ledger anchor with soft elevation, 16 px terminal with inner highlight; 16/20/14 px on mobile. Grids, form and responsive flows unchanged. |
 | 10 Oct | Card 03 image replaced with the sharp, high-resolution Catalonia retreat version (same file names, `.webp` and `.jpg`, exact 16:9). Alt text updated to "Secluded Catalonia masia retreat patio, seating area and covered outdoor kitchen". Card structure, layout and mobile snap unchanged. |
 | 10 Oct | Clarified monthly board duration to specify inclusion of private working lunch across Fact Strip, Cadence Card 01, and Facilitation Engine header. |
 | 10 Oct | Candidate Review drawer and FAQ contact: the FAQ sidebar's mailto link is replaced by a drawer trigger ("Request Candidate Review & Confidential Diagnostic"), so FAQ inquiries route into the form. Drawer intro shortened; "Stage" becomes "Leadership context" with seven options (adds acquisition/searcher, active merger, exited founder and family business); inflection point is now a two-line field, 600 characters, no counter; field labels set in mono caps. Netlify form tag, honeypot, hidden `form-name` and all field names unchanged (end-to-end submit tested). |
