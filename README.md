@@ -212,7 +212,14 @@ Modules:
 |---|---|
 | `the-round-apply` | `name`, `email`, `company`, `stage`, `inflection_point` (optional), `privacy_consent`, honeypot `bot-field` |
 
-Netlify detects the form from the static HTML on each deploy. Set up email notifications under Site settings › Forms.
+Netlify detects the form from the static HTML on each deploy, but only if form detection is switched on for the site. On newer Netlify sites it is off by default.
+
+1. Netlify dashboard › the site › Forms (or Site configuration › Forms) › Enable form detection.
+2. Trigger a new deploy (Deploys › Trigger deploy › Clear cache and deploy site). Detection only runs during a deploy.
+3. Check that `the-round-apply` now appears under Forms.
+4. Set up email notifications under Forms › Form notifications.
+
+A 404 on submission means the form is not registered: repeat steps 1 and 2. The browser console logs the status code (`[The Round] Form submission failed: 404`).
 
 ---
 
@@ -276,6 +283,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 9 Oct | Netlify form hardening: raw `netlify` attribute added next to `data-netlify`, honeypot paragraph hidden inline, `form-name` re-asserted in the AJAX payload, failure status logged to the console. README now documents enabling form detection in Netlify. |
 | 9 Oct | Updated Card 03 media to high-resolution Catalonia masia terrace photograph (`cadence-immersion-patio`). Alt text updated; `object-position: center 60%`. |
 | 9 Oct | Updated Hero headline and subhead to authoritative positioning ('Built for those who carry the ultimate call'). Synchronized OpenGraph and meta descriptions. JSON-LD service description updated. |
 | 9 Oct | Card 05 redesigned: operating-compact pill, new subtitle, illustrative ledger telemetry panel (two anonymised entries with status pills), Charter quote, and two actions (Charter, Member Sign-In). New The Round Charter drawer with the 11 points of Schedule 2 and a GDPR note. Charter link added to the footer. |

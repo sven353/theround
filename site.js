@@ -344,10 +344,13 @@
         btn.disabled = true;
         btn.textContent = 'Sending…';
 
+        const formData = new FormData(form);
+        if (!formData.get('form-name')) formData.set('form-name', 'the-round-apply');
+
         fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(new FormData(form)).toString()
+          body: new URLSearchParams(formData).toString()
         })
           .then((res) => {
             if (!res.ok) throw new Error(String(res.status));
@@ -356,12 +359,15 @@
             success.hidden = false;
             success.focus();
           })
-          .catch(() => {
+          .catch((err) => {
+            // A 404 here almost always means Netlify has not registered the form:
+            // enable form detection in the Netlify dashboard and redeploy.
+            console.error('[The Round] Form submission failed:', err && err.message);
             status(`We could not send your submission just now. Please try again or write to ${CONFIG.contactEmail}.`, true);
           })
           .finally(() => {
             btn.disabled = false;
-            btn.textContent = btn.dataset.submitLabel;
+            btn.textContent = btn.dataset.submitLabel || 'Submit for Review';
           });
       });
     };
