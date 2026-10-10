@@ -734,6 +734,84 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
   .dash-actions .btn{width:100%;}
 }
 
+/* ---------- 17b Mobile refactor (< 768px only) ----------
+   Everything below is scoped to max-width:767px so the desktop
+   and tablet view (>= 768px) is untouched. Placed after the older
+   640px rules so it wins on equal specificity. */
+.mobile-swipe-hint{display:none;}
+
+@media (max-width:767px){
+  /* One 1.25rem side gutter for every section below 768px */
+  :root{--gutter:1.25rem;}
+
+  /* Hero: 96px 1.25rem 48px (side padding comes from the container gutter) */
+  .hero{padding:96px 0 48px;}
+  #hero-title{font-size:clamp(1.85rem, 7.5vw, 2.25rem); line-height:1.15; margin-bottom:14px;}
+  .hero .subhead{font-size:1.02rem; line-height:1.5; margin-bottom:24px;}
+  .hero-ctas{flex-direction:column; align-items:stretch; width:100%; gap:14px;}
+  .hero-ctas .btn-primary{width:100%; justify-content:center; text-align:center;}
+  .hero-ctas .btn-link{align-self:center; text-align:center;}
+
+  /* Cadence: horizontal snap carousel */
+  .cadence-grid{
+    display:flex; gap:16px; overflow-x:auto; overflow-y:hidden;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain;
+    padding:8px var(--gutter) 24px; margin:0 calc(-1 * var(--gutter));
+    align-items:flex-start;
+    scroll-padding:0 var(--gutter); scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .cadence-grid::-webkit-scrollbar{display:none;}
+  .cadence-card,.cadence-card:nth-child(4),.cadence-card:nth-child(5){
+    flex:0 0 85vw; max-width:340px; grid-column:auto; scroll-snap-align:center;
+  }
+  .mobile-swipe-hint{
+    display:block; margin:8px 0 0; text-align:center;
+    font-size:.75rem; letter-spacing:.02em; color:#64748B;
+    transition:opacity var(--dur-collapse, .3s) ease;
+  }
+  .mobile-swipe-hint.is-dismissed{opacity:0;}
+
+  /* Card 5 telemetry: status badge on its own row above the action */
+  .card-ledger-telemetry{padding:14px 12px;}
+  .telemetry-header{flex-direction:column-reverse; align-items:flex-start; gap:6px;}
+  .telemetry-action{font-size:.88rem; line-height:1.4;}
+
+  /* Terms: compact 2 x 2 grid */
+  .terms-grid{grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px;}
+  .term-card{padding:18px 14px;}
+  .term-value,.term-value--text{font-size:1.15rem; line-height:1.25; margin-bottom:8px !important;}
+  .term-detail{font-size:.78rem; line-height:1.35; padding-top:10px;}
+
+  /* Drawers and portal as bottom sheets */
+  .drawer-overlay{justify-content:stretch; align-items:flex-end;}
+  .drawer{
+    width:100%; height:92vh; height:92dvh; max-height:92dvh;
+    border-left:none; border-top:var(--hairline) solid var(--hairline-color);
+    border-radius:16px 16px 0 0; overflow:hidden;
+    box-shadow:0 -24px 60px -30px rgba(var(--navy-rgb),.55);
+    animation:sheetIn 420ms var(--ease-reveal);
+  }
+  .drawer:focus{box-shadow:0 -24px 60px -30px rgba(var(--navy-rgb),.55);}
+  .drawer-body{padding-bottom:calc(28px + env(safe-area-inset-bottom)); -webkit-overflow-scrolling:touch; overscroll-behavior:contain;}
+
+  .modal-overlay{padding:0; align-items:flex-end; justify-content:stretch;}
+  .modal,.modal.is-dashboard{
+    width:100%; max-width:none; min-height:0; height:auto; max-height:92vh; max-height:92dvh;
+    border-radius:16px 16px 0 0; border:none; border-top:var(--hairline) solid var(--hairline-color);
+    padding:56px 20px calc(28px + env(safe-area-inset-bottom));
+    overscroll-behavior:contain;
+    animation:sheetIn 420ms var(--ease-reveal);
+  }
+  .modal.is-dashboard{height:92vh; height:92dvh;}
+
+  /* Touch targets and iOS zoom prevention */
+  .modal-close{width:44px; height:44px;}
+  .modal .modal-close{top:10px; right:10px;}
+  .field input,.field textarea,.field select{font-size:16px;}
+}
+
+@keyframes sheetIn{from{transform:translateY(100%);}to{transform:translateY(0);}}
+
 /* ---------- 18 Reduced motion & print ---------- */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}

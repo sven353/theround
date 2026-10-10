@@ -112,7 +112,7 @@ Fonts are served from `assets/fonts/` via `@font-face`. Google Fonts is delibera
 
 - Every border is `1px solid var(--hairline-color)`. Never 2 px or 3 px.
 - Radii: `--radius-xs` 2 px (buttons, inputs), `--radius-sm` 4 px, `--radius-md` 6 px (cards), `--radius-lg` 8 px (panels, modals), `--radius-pill` 999 px (badges).
-- Container: 1120 px max width, 32 px side padding (24 px at 960 px and below, 16 px at 640 px and below).
+- Container: 1120 px max width, 32 px side padding (24 px at 960 px and below, 1.25rem / 20 px below 768 px).
 - Section padding: 96 px desktop, 80 px tablet, 64 px mobile.
 - Eyebrows: Lato 700, 0.78rem, uppercase, 0.12em tracking, navy, with a 28 × 3 px teal bar before.
 
@@ -133,7 +133,20 @@ Fonts are served from `assets/fonts/` via `@font-face`. Google Fonts is delibera
 | 960 px and below | Cadence grid goes to 2 columns, ledger table stacks |
 | 860 px and below | FAQ goes to one column |
 | 768 px and below | Proof ribbon, fit cards and integrity box go to one column |
-| 640 px and below | Everything single column, modals full screen |
+| 640 px and below | Older small-screen rules (typography, footer, dashboard metrics); most layout is now overridden by the block below |
+| 767 px and below | Mobile refactor (section 17b of `styles.css`): hero stacked with full-width CTA, cadence becomes a swipe carousel, telemetry badges stack, terms stay 2 × 2, drawers and portal become bottom sheets |
+
+### Mobile layer (below 768 px)
+
+All mobile layout lives in one `@media (max-width: 767px)` block, section 17b, placed after the older responsive rules so it wins without `!important`. Nothing in it applies at 768 px or wider. Desktop at 768, 1024 and 1440 px was checked pixel for pixel against the previous build and is identical.
+
+- Hero: `96px 0 48px` padding plus the 1.25rem gutter; h1 `clamp(1.85rem, 7.5vw, 2.25rem)`; subhead 1.02rem / 1.5; CTA group stacked, primary button full width, secondary link centred.
+- Cadence: `.cadence-grid` turns into a horizontal flex track with `scroll-snap-type: x mandatory`, hidden scrollbar and edge-to-edge bleed. Each card is `85vw` up to 340 px, snapped to centre, at its natural height. A `.mobile-swipe-hint` line sits under the track (hidden on desktop) and fades after the first swipe.
+- Card 5: status badge sits on its own row above the context line; telemetry padding 14px 12px.
+- Terms: 2 × 2 grid, 12 px gap, values 1.15rem, detail text 0.78rem / 1.35.
+- Overlays: the Candidate Review drawer, the Charter drawer and the Member Portal slide up from the bottom (`sheetIn` keyframe), 92dvh tall with a 92vh fallback, 16 px top radius, bottom padding includes `env(safe-area-inset-bottom)`. The overlays still toggle via the `hidden` attribute, so no JavaScript changed for this.
+- Touch: close buttons 44 × 44 px; form fields 16 px so iOS Safari does not zoom on focus.
+- Copy: "Barcelona&nbsp;01" and every trailing "&nbsp;→" use a non-breaking space so a narrow screen never leaves "01" or the arrow alone on a line.
 
 ---
 
@@ -205,6 +218,7 @@ Modules:
 6. FAQ accordion: one answer open at a time; questions 5 to 10 sit in `#faq-extended` and are revealed by the "View all 10 questions" toggle; links like `#faq-q7` open that answer directly.
 8. The Round Charter drawer: opens from any `[data-open-charter]`, focus trap, Escape and backdrop close, body scroll lock (kept if another overlay is still open), hands over to the application drawer from its own button.
 9. Cookie Preferences: the site sets no cookies and no tracking, so the footer link shows a short explanatory note.
+10. Cadence swipe hint: adds `is-dismissed` to `[data-swipe-hint]` once the mobile carousel has scrolled 24 px. No effect on desktop, where the hint is hidden.
 
 ### Netlify Forms
 
@@ -283,6 +297,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 10 Oct | Mobile refactor below 768 px: stacked hero with full-width CTA, cadence swipe carousel with scroll snap and swipe hint, stacked telemetry badges, compact 2 × 2 terms grid, bottom-sheet drawers and portal with safe-area padding, 44 px close buttons, 16 px inputs, 1.25rem gutter. Non-breaking spaces keep "Barcelona 01" and trailing arrows together. New `SwipeHint` module in `site.js`. Desktop (768 px and up) verified pixel-identical. |
 | 9 Oct | Netlify form hardening: raw `netlify` attribute added next to `data-netlify`, honeypot paragraph hidden inline, `form-name` re-asserted in the AJAX payload, failure status logged to the console. README now documents enabling form detection in Netlify. |
 | 9 Oct | Updated Card 03 media to high-resolution Catalonia masia terrace photograph (`cadence-immersion-patio`). Alt text updated; `object-position: center 60%`. |
 | 9 Oct | Updated Hero headline and subhead to authoritative positioning ('Built for those who carry the ultimate call'). Synchronized OpenGraph and meta descriptions. JSON-LD service description updated. |

@@ -790,6 +790,28 @@
   })();
 
   /* ------------------------------------------------------------------------
+     CADENCE CAROUSEL HINT (mobile only)
+     Below 768px the cadence grid becomes a horizontal snap carousel (CSS).
+     The "Swipe to explore" hint fades out after the first real swipe.
+     Desktop never shows the hint, so this is a no-op there.
+     ------------------------------------------------------------------------ */
+
+  const SwipeHint = (() => {
+    const init = () => {
+      const hint = document.querySelector('[data-swipe-hint]');
+      const track = document.querySelector('.cadence-grid');
+      if (!hint || !track) return;
+      const onScroll = () => {
+        if (track.scrollLeft < 24) return;
+        hint.classList.add('is-dismissed');
+        track.removeEventListener('scroll', onScroll);
+      };
+      track.addEventListener('scroll', onScroll, { passive: true });
+    };
+    return { init };
+  })();
+
+  /* ------------------------------------------------------------------------
      INIT
      ------------------------------------------------------------------------ */
 
@@ -810,6 +832,7 @@
     ApplyForm.init();
     Charter.init();
     Portal.init();
+    SwipeHint.init();
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
