@@ -231,7 +231,11 @@ Modules:
 
 | Form name | Fields |
 |---|---|
-| `the-round-apply` | `name`, `email`, `company`, `stage`, `inflection_point` (optional), `privacy_consent`, honeypot `bot-field` |
+| `the-round-apply` | `name`, `email`, `company`, `stage` (labelled "Leadership context"), `inflection_point` (optional, max 600 characters), `privacy_consent`, honeypot `bot-field` |
+
+Field `name` attributes are the Netlify column names: keep them stable. The `apply-*` values are element IDs used for labels and error messages, not submitted names.
+
+`stage` submits one of these values: `founder-scaling` (Founder / CEO, scaling venture or growth stage), `acquired-company` (Acquisition / searcher, recently bought a company or MBI), `managing-merger` (CEO / MD managing an active merger or integration), `exited-founder` (Exited entrepreneur, active chairman or next venture), `pe-backed` (CEO / MD, PE-backed or mid-market enterprise), `corporate-director` (Managing Director, international group or regional P&L), `family-business` (CEO / principal, family business or succession). Submissions made before 10 Oct 2026 carry the old free-text stage labels.
 
 Netlify detects the form from the static HTML on each deploy, but only if form detection is switched on for the site. On newer Netlify sites it is off by default.
 
@@ -304,6 +308,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 10 Oct | Candidate Review drawer and FAQ contact: the FAQ sidebar's mailto link is replaced by a drawer trigger ("Request Candidate Review & Confidential Diagnostic"), so FAQ inquiries route into the form. Drawer intro shortened; "Stage" becomes "Leadership context" with seven options (adds acquisition/searcher, active merger, exited founder and family business); inflection point is now a two-line field, 600 characters, no counter; field labels set in mono caps. Netlify form tag, honeypot, hidden `form-name` and all field names unchanged (end-to-end submit tested). |
 | 10 Oct | Tone restoration on the new layout: guarantee strip now reads Cohort consent ("review and consent to every incoming candidate") instead of veto rights; fit criteria restored with bold lead-in anchors and revised copy (Total presence, Direct competitors, Commercial pitching, Passive observers); Card 04 title restored to "The Annual Executive Offsite & Sanctuary"; terminal actionable status set to amber `#D97706`, active stays teal-on-dark. Layout (2 × 2 cadence, ledger anchor, connected pipeline, no photo strip) unchanged. |
 | 10 Oct | Integrated Improvements 1–4: elevated Fact Strip indexes, Facilitation Engine horizontal pipeline, bilateral Standards of Fit governance grid, and symmetrical 2x2 Cadence touchpoints with full-width Ledger anchor span. Detail: proof ribbon and its three photo pairs removed, "Environment" dropped from header and footer navigation; section backgrounds re-sequenced (cream facts, paper cadence, cream facilitation, paper fit); `SwipeHint` in `site.js` now targets `.cadence-touchpoints-grid`; old cadence, engine, fit and proof-ribbon CSS retired. Netlify form markup unchanged (verified by diff). |
 | 10 Oct | Optimized mobile viewport (<768px): above-the-fold CTA stacking, horizontal cadence touch carousel, 2x2 terms grid, and native bottom-sheet modal drawers. Laptop/desktop views kept completely untouched. Detail: hero padding 92/40 px, h1 and subhead margins tightened, primary CTA min-height 48 px, secondary link 44 px tap target; swipe hint now reads "← Swipe to explore formats →"; terms values 1.1rem with unbroken hairline dividers; the `sheetIn` keyframe moved inside the mobile media query. Verified: every CSS rule outside `@media (max-width: 767px)` is byte-identical to the previous build, and desktop screenshots at 768, 1024 and 1440 px match apart from photo-decoding noise that also appears between two runs of the unchanged baseline. |

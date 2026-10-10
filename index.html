@@ -557,9 +557,9 @@
           <p class="eyebrow">Due diligence · Operating model &amp; standards</p>
           <h2 id="faq-title">Frequently Asked Questions.</h2>
           <p class="faq-intro-sub">Direct answers on cohort governance, Barcelona meeting cadences, retreat inclusions and confidentiality.</p>
-          <div class="faq-bridge">
-            <p>Have a specific question?</p>
-            <a href="mailto:sven@kuma.partners?subject=Question%20about%20The%20Round%20Barcelona%2001" class="faq-bridge-link">Speak directly with Dr. Sven Mulfinger <span class="arrow" aria-hidden="true">→</span></a>
+          <div class="faq-sidebar-cta">
+            <p class="faq-cta-label">Have a specific question?</p>
+            <button type="button" class="faq-cta-link" data-open-apply>Request Candidate Review &amp; Confidential Diagnostic&nbsp;<span class="arrow" aria-hidden="true">→</span></button>
           </div>
         </div>
 
@@ -790,7 +790,7 @@
     </div>
 
     <div class="drawer-body">
-      <p class="drawer-sub">Barcelona 01 is intentionally curated and strictly capped at 8 to 12 members. Admission is subject to mutual strategic alignment, non-compete verification and cohort consent. Every submission is reviewed directly and confidentially by Dr. Sven Mulfinger.</p>
+      <p class="drawer-sub drawer-intro">Barcelona 01 is strictly capped at 8 to 12 members. Admission is governed by non-compete vetting and cohort consent. Every inquiry is reviewed confidentially by Dr. Sven Mulfinger.</p>
 
       <form class="apply-form" name="the-round-apply" method="POST" action="/" data-netlify="true" netlify netlify-honeypot="bot-field" data-apply-form novalidate>
         <input type="hidden" name="form-name" value="the-round-apply">
@@ -818,14 +818,17 @@
         </div>
 
         <div class="field">
-          <label for="apply-stage">Stage</label>
+          <label for="apply-stage">Leadership context</label>
           <div class="select-shell">
             <select id="apply-stage" name="stage" required>
-              <option value="">Select your role and stage</option>
-              <option>Founder / CEO, Seed to Series A</option>
-              <option>Founder / CEO, Series B and beyond</option>
-              <option>CEO / MD, established or PE-backed company</option>
-              <option>Managing Director of an international group</option>
+              <option value="" disabled selected>Select your leadership context</option>
+              <option value="founder-scaling">Founder / CEO (Scaling Venture / Growth Stage)</option>
+              <option value="acquired-company">Acquisition / Searcher (Recently bought a company / MBI)</option>
+              <option value="managing-merger">CEO / MD (Managing an active merger or integration)</option>
+              <option value="exited-founder">Exited Entrepreneur (Active Chairman / Next Venture)</option>
+              <option value="pe-backed">CEO / MD (PE-Backed or Mid-Market Enterprise)</option>
+              <option value="corporate-director">Managing Director (International Group / Regional P&amp;L)</option>
+              <option value="family-business">CEO / Principal (Family Business / Succession)</option>
             </select>
             <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
           </div>
@@ -833,9 +836,11 @@
         </div>
 
         <div class="field">
-          <label for="apply-challenge">Primary strategic inflection point <span class="optional">optional</span></label>
-          <textarea id="apply-challenge" name="inflection_point" rows="4" maxlength="1200" placeholder="The inflection point, decision or friction you would bring to your first board." aria-describedby="apply-challenge-count"></textarea>
-          <span class="field-hint field-hint--count" id="apply-challenge-count" data-char-count>0 / 1200</span>
+          <div class="label-row">
+            <label for="apply-challenge">Primary inflection point</label>
+            <span class="label-optional">Optional</span>
+          </div>
+          <textarea id="apply-challenge" name="inflection_point" rows="2" maxlength="600" placeholder="One live friction point, strategic choice or governance dilemma."></textarea>
         </div>
 
         <div class="field field--check">

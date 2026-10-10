@@ -391,12 +391,16 @@ header.site.is-scrolled{box-shadow:0 8px 24px -20px rgba(var(--navy-rgb),.35);}
 .faq-intro .eyebrow::before{margin-top:.6em;}
 .faq-intro h2{margin-bottom:14px;}
 .faq-intro-sub{font-size:.95rem; font-weight:400; color:var(--muted); line-height:1.6; margin:0;}
-.faq-bridge{margin-top:28px; padding-top:24px; border-top:var(--hairline) solid var(--hairline-color);}
-.faq-bridge p{font-size:.8rem; color:var(--muted); margin-bottom:8px;}
-.faq-bridge-link{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-body); font-weight:700; font-size:.88rem; color:var(--navy); text-decoration:none; transition:color .2s ease;}
-.faq-bridge-link:hover{color:var(--teal);}
-.faq-bridge-link .arrow{display:inline-block; transition:transform .2s ease;}
-.faq-bridge-link:hover .arrow{transform:translateX(4px);}
+.faq-sidebar-cta{margin-top:2rem; padding-top:1.5rem; border-top:var(--hairline) solid var(--hairline-color);}
+.faq-cta-label{margin:0 0 8px; font-size:.95rem; color:var(--muted);}
+.faq-cta-link{
+  display:inline-block; padding:0; background:none; border:none; cursor:pointer; text-align:left;
+  font-family:var(--font-head); font-weight:700; font-size:1.05rem; line-height:1.35; letter-spacing:-.01em; color:var(--navy);
+  transition:color .25s var(--ease-reveal);
+}
+.faq-cta-link:hover{color:var(--teal);}
+.faq-cta-link .arrow{display:inline-block; transition:transform .25s var(--ease-reveal);}
+.faq-cta-link:hover .arrow{transform:translateX(4px);}
 
 .faq-item{border-top:var(--hairline) solid var(--hairline-color);}
 .faq-h{margin:0; font-size:inherit; font-weight:inherit; line-height:inherit; text-wrap:pretty;}
@@ -485,7 +489,10 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
 @keyframes drawerIn{from{transform:translateX(40px); opacity:0;}to{transform:none; opacity:1;}}
 
 .field{display:flex; flex-direction:column; gap:6px; margin-bottom:20px; min-width:0;}
-.field label{font-family:var(--font-body); font-weight:700; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; color:var(--navy);}
+/* Field labels in mono caps, matching the site's metadata system */
+.field > label,.label-row label{font-family:var(--font-mono); font-weight:700; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--navy);}
+.label-row{display:flex; justify-content:space-between; align-items:baseline; gap:12px;}
+.label-optional{font-family:var(--font-mono); font-size:.65rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);}
 .field input,.field textarea,.field select{
   width:100%; font-family:var(--font-body); font-size:1rem; font-weight:400; color:var(--ink);
   background:var(--white); border:var(--hairline) solid var(--hairline-color); border-radius:var(--radius-xs);
@@ -493,6 +500,8 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
   transition:border-color .2s ease, box-shadow .2s ease;
 }
 .field textarea{resize:vertical; min-height:120px; line-height:1.6;}
+/* Compact two-line inflection point */
+.field textarea#apply-challenge{min-height:64px; max-height:120px; line-height:1.45;}
 .field input:hover,.field textarea:hover,.field select:hover{border-color:rgba(var(--navy-rgb),.3);}
 .field input:focus,.field textarea:focus,.field select:focus{outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(var(--teal-rgb),.14);}
 .field input::placeholder,.field textarea::placeholder{color:rgba(26,26,26,.38);}
@@ -501,15 +510,13 @@ footer.site{background:var(--cream); border-top:var(--hairline) solid var(--hair
 .select-shell select{padding-right:40px; cursor:pointer;}
 .select-chevron{position:absolute; right:14px; top:50%; width:16px; height:16px; transform:translateY(-50%); pointer-events:none; color:var(--navy);}
 .field-hint{font-size:.8rem; color:var(--muted);}
-.field-hint--count{text-align:right; font-family:var(--font-mono); font-size:.72rem;}
 .field-error{font-size:.8rem; color:var(--danger);}
 .field-error:empty{display:none;}
-.optional{margin-left:4px; font-weight:400; text-transform:none; letter-spacing:0; color:var(--muted);}
 .field--check{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; align-items:start;}
 .field--check input{position:relative; width:18px; height:18px; padding:0; margin-top:3px; border-radius:var(--radius-xs); cursor:pointer;}
 .field--check input:checked{background:var(--navy); border-color:var(--navy);}
 .field--check input:checked::after{content:""; position:absolute; left:5px; top:1px; width:5px; height:10px; border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg);}
-.field--check label{text-transform:none; letter-spacing:0; font-weight:400; font-size:.88rem; color:var(--muted); line-height:1.5;}
+.field--check label{font-family:var(--font-body); text-transform:none; letter-spacing:0; font-weight:400; font-size:.88rem; color:var(--muted); line-height:1.5;}
 .field--check label a{color:var(--teal);}
 .field--check .field-error{grid-column:2;}
 .form-status{margin:10px 0 0; font-size:.88rem; color:var(--muted);}
