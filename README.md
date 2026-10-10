@@ -49,7 +49,7 @@ Photo source files and their web names:
 |---|---|---|
 | The Round monthly meeting 1.jpeg | cadence-peer-board | Card 1: cropped to 16:9, desk nameplates blurred |
 | Sven Mulfinger Listening.png | cadence-sparring-barcelona | Card 2: cropped to 16:9 |
-| Masia cataluña.jpeg (full resolution) | cadence-immersion-patio | Card 3: cropped to 16:9 at 60% from the top, `object-position: center 60%` |
+| Sharpened Catalonia retreat image supplied 10 Oct 2026 (1024 × 616) | cadence-immersion-patio | Card 3: cropped to exact 16:9 (1024 × 576, 24 px off the top, 16 px off the bottom); replaces the earlier soft masia file |
 | Offsite meeting Costa Brava.jpeg | cadence-offsite-costa-brava | Card 4: cropped to 16:9 at 35% from the top, `object-position: center 35%` |
 
 Source files were renamed (no spaces or accents) and resized for the web (1024 px wide).
@@ -294,7 +294,7 @@ A 404 on submission means the form is not registered: repeat steps 1 and 2. The 
 
 ## 9. Open items
 
-- Confirm usage rights for the masia photo (`cadence-immersion-patio`).
+- Confirm usage rights for the Card 3 image (`cadence-immersion-patio`). If it was AI-generated or AI-enhanced rather than photographed at the actual retreat venue, decide whether the card should say so or use a real photo of the venue.
 - Confirm that everyone recognisable in `cadence-offsite-costa-brava` has agreed to appear on the site.
 - Confirm that everyone recognisable in `cadence-peer-board` has agreed to appear on the site.
 - Replace `LEDGER` sample rows with real (anonymised) entries once the cohort starts.
@@ -308,6 +308,7 @@ All dates 2026.
 
 | Date | Change |
 |---|---|
+| 10 Oct | Card 03 image replaced with the sharp, high-resolution Catalonia retreat version (same file names, `.webp` and `.jpg`, exact 16:9). Alt text updated to "Secluded Catalonia masia retreat patio, seating area and covered outdoor kitchen". Card structure, layout and mobile snap unchanged. |
 | 10 Oct | Clarified monthly board duration to specify inclusion of private working lunch across Fact Strip, Cadence Card 01, and Facilitation Engine header. |
 | 10 Oct | Candidate Review drawer and FAQ contact: the FAQ sidebar's mailto link is replaced by a drawer trigger ("Request Candidate Review & Confidential Diagnostic"), so FAQ inquiries route into the form. Drawer intro shortened; "Stage" becomes "Leadership context" with seven options (adds acquisition/searcher, active merger, exited founder and family business); inflection point is now a two-line field, 600 characters, no counter; field labels set in mono caps. Netlify form tag, honeypot, hidden `form-name` and all field names unchanged (end-to-end submit tested). |
 | 10 Oct | Tone restoration on the new layout: guarantee strip now reads Cohort consent ("review and consent to every incoming candidate") instead of veto rights; fit criteria restored with bold lead-in anchors and revised copy (Total presence, Direct competitors, Commercial pitching, Passive observers); Card 04 title restored to "The Annual Executive Offsite & Sanctuary"; terminal actionable status set to amber `#D97706`, active stays teal-on-dark. Layout (2 × 2 cadence, ledger anchor, connected pipeline, no photo strip) unchanged. |
